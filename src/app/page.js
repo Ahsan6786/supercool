@@ -786,13 +786,13 @@ export default function Home() {
                     <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-white/15 rounded-2xl group-hover:scale-110 group-hover:bg-white/20 transition-all duration-300" style={{width:'48px',height:'48px'}}>
                       <i className={`${stat.icon} text-xl text-white`} />
                     </div>
-                    <div className="flex flex-col sm:items-center items-start gap-0.5">
-                      <span className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-plus-jakarta tracking-tight">
+                    <div className="flex flex-col sm:items-center items-start gap-1">
+                      <div className="text-xl sm:text-3xl md:text-4xl font-extrabold font-plus-jakarta tracking-tight text-white block">
                         {stat.number}
-                      </span>
-                      <span className="text-xs font-bold text-white/70 uppercase tracking-wider sm:text-center text-left">
+                      </div>
+                      <div className="text-[11px] sm:text-xs font-bold text-white/70 uppercase tracking-wider sm:text-center text-left block">
                         {stat.label}
-                      </span>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -924,7 +924,7 @@ export default function Home() {
             </div>
 
             {/* Right Column: Copy & Trust Stats */}
-            <div className="lg:col-span-7 flex flex-col items-start text-start animate-fade-up" style={{ animationDelay: '0.2s' }}>
+            <div className="lg:col-span-7 flex flex-col items-start text-start lg:items-start lg:text-start animate-fade-up w-full" style={{ animationDelay: '0.2s' }}>
               {/* Subheading */}
               <p className="text-primary font-bold text-base md:text-lg leading-relaxed mb-6">
                 {language === "ar" 
@@ -940,12 +940,12 @@ export default function Home() {
               </p>
 
               {/* Trust Statistics */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full pt-6 border-t border-slate-100">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full pt-6 border-t border-slate-100 justify-items-start">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-slate-50 text-sky-500 border border-slate-100 flex items-center justify-center text-sm flex-shrink-0">
                     <i className="fa-solid fa-check" />
                   </div>
-                  <span className="text-sm font-extrabold text-primary">
+                  <span className="text-sm font-extrabold text-primary text-start">
                     {language === "ar" ? "٣٠+ عاماً من الخبرة" : "30+ Years Experience"}
                   </span>
                 </div>
@@ -953,15 +953,15 @@ export default function Home() {
                   <div className="w-8 h-8 rounded-full bg-slate-50 text-sky-500 border border-slate-100 flex items-center justify-center text-sm flex-shrink-0">
                     <i className="fa-solid fa-check" />
                   </div>
-                  <span className="text-sm font-extrabold text-primary">
-                    {language === "ar" ? "خدمة ١٠,٠٠٠+ عميل" : "10,000+ Clients Served"}
+                  <span className="text-sm font-extrabold text-primary text-start">
+                    {language === "ar" ? "خدمة ١٥,٠٠٠+ عميل" : "15,000+ Clients Served"}
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-slate-50 text-sky-500 border border-slate-100 flex items-center justify-center text-sm flex-shrink-0">
                     <i className="fa-solid fa-check" />
                   </div>
-                  <span className="text-sm font-extrabold text-primary">
+                  <span className="text-sm font-extrabold text-primary text-start">
                     {language === "ar" ? "أخصائيو تكييف محترفون" : "Professional AC Specialists"}
                   </span>
                 </div>
@@ -969,7 +969,7 @@ export default function Home() {
                   <div className="w-8 h-8 rounded-full bg-slate-50 text-sky-500 border border-slate-100 flex items-center justify-center text-sm flex-shrink-0">
                     <i className="fa-solid fa-check" />
                   </div>
-                  <span className="text-sm font-extrabold text-primary">
+                  <span className="text-sm font-extrabold text-primary text-start">
                     {language === "ar" ? "موثوقون في الأحساء، الهفوف، والقارة" : "Trusted Across Al Ahsa, Al Hofuf & Al Qarah"}
                   </span>
                 </div>
@@ -1027,6 +1027,7 @@ export default function Home() {
                       {item.isVideo ? (
                         <video
                           src={item.src}
+                          poster="/s3.png"
                           controls
                           playsInline
                           preload="metadata"
@@ -1098,6 +1099,7 @@ export default function Home() {
                     {item.isVideo ? (
                       <video
                         src={item.src}
+                        poster="/s3.png"
                         controls
                         playsInline
                         preload="metadata"
@@ -1126,73 +1128,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* How AC Works Section */}
-        <section id="how-it-works" className="py-20 bg-white border-t border-slate-100">
-          <div className="max-w-7xl mx-auto px-6 text-center">
-            <span className="text-sky-500 font-bold uppercase tracking-wider text-xs block mb-10">
-              {language === "ar" ? "آلية العمل" : "Science of Air Conditioning"}
-            </span>
-            
-            {/* Diagram Display Container */}
-            <div className="w-full mb-16 flex justify-center animate-fade-up">
-              {/* Mobile Diagram Crossfade Container */}
-              <div className="block md:hidden relative w-full max-w-[340px] mx-auto rounded-3xl overflow-hidden shadow-xl border border-slate-200/60">
-                <img 
-                  src="/ac-portait.png" 
-                  alt="How AC Works Diagram Mobile English" 
-                  className={`w-full h-auto object-contain transition-opacity duration-500 ease-in-out ${
-                    language === "ar" ? "opacity-0" : "opacity-100"
-                  }`}
-                />
-                <img 
-                  src="/ac-arabic.png" 
-                  alt="How AC Works Diagram Mobile Arabic" 
-                  className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ease-in-out ${
-                    language === "ar" ? "opacity-100" : "opacity-0"
-                  }`}
-                />
-              </div>
 
-              <img 
-                src="/ac-desktop.png" 
-                alt="How AC Works Diagram Desktop" 
-                className="hidden md:block w-full max-w-5xl rounded-3xl shadow-2xl border border-slate-200/60 transition-transform duration-300 hover:scale-[1.01]"
-              />
-            </div>
-
-            {/* Stepper Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-              {[
-                {
-                  step: "01",
-                  title: language === "ar" ? "امتصاص الحرارة" : "Absorb Heat"
-                },
-                {
-                  step: "02",
-                  title: language === "ar" ? "ضغط المبرد" : "Compress Pressure"
-                },
-                {
-                  step: "03",
-                  title: language === "ar" ? "طرد الحرارة" : "Expel Heat"
-                },
-                {
-                  step: "04",
-                  title: language === "ar" ? "التبريد والتدوير" : "Cool & Recirculate"
-                }
-              ].map((stepItem, idx) => (
-                <div key={idx} className="relative p-6 bg-slate-50/50 border border-slate-100 hover:border-slate-200 rounded-2xl shadow-sm text-center transition-all duration-300 hover:shadow-md">
-                  <span className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white font-extrabold text-xs shadow">
-                    {stepItem.step}
-                  </span>
-                  <h3 className="font-plus-jakarta font-extrabold text-primary mt-3">
-                    {stepItem.title}
-                  </h3>
-                </div>
-              ))}
-            </div>
-
-          </div>
-        </section>
 
         {/* Call To Action Section - Using boy.png for NEED AC SERVICE */}
         <section id="contact" className="py-16 md:py-24 bg-slate-50/50">

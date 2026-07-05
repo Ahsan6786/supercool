@@ -145,7 +145,7 @@ export default function GalleryClient() {
               return (
                 <div key={idx} className="overflow-hidden rounded-2xl border border-slate-100 shadow-sm">
                   {item.isVideo ? (
-                    <video src={item.src} controls playsInline preload="metadata"
+                    <video src={item.src} poster="/s3.png" controls playsInline preload="metadata"
                       className={`w-full block ${isLandscape ? "aspect-[3/2]" : "aspect-[3/4]"} object-cover`} />
                   ) : (
                     <Image src={item.src} alt={language === "ar" ? item.altAr : item.altEn}
@@ -190,7 +190,7 @@ export default function GalleryClient() {
               return result.map((item, idx) => (
                 <div key={idx} className={`overflow-hidden rounded-xl border border-slate-100 ${item.span}`}>
                   {item.isVideo ? (
-                    <video src={item.src} controls playsInline preload="metadata"
+                    <video src={item.src} poster="/s3.png" controls playsInline preload="metadata"
                       className={`w-full block ${item.span === "col-span-1" ? "aspect-[3/4] object-cover" : "h-auto"}`} />
                   ) : (
                     <Image src={item.src} alt={language === "ar" ? item.altAr : item.altEn}
