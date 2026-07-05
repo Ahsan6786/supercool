@@ -1,0 +1,309 @@
+@import "tailwindcss";
+
+@theme {
+  --font-outfit: var(--font-outfit), sans-serif;
+  --font-plus-jakarta: var(--font-plus-jakarta-sans), sans-serif;
+  
+  --color-primary: #0c2b5c;
+  --color-primary-light: #164085;
+  --color-primary-dark: #071b3a;
+  --color-accent: #e23c2d;
+  --color-accent-hover: #c82c1f;
+  --color-whatsapp: #25d366;
+}
+
+body {
+  font-family: var(--font-outfit);
+  background-color: #f8fafc;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Custom keyframes for custom animations */
+@keyframes pulse-slow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes wave-air {
+  0% {
+    transform: translateY(0) scaleX(0.7) scaleY(1);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(60px) scaleX(1.1) scaleY(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(100px) scaleX(1.4) scaleY(2);
+    opacity: 0;
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+.wave-animation-1 {
+  animation: wave-air 3s infinite linear;
+}
+
+.wave-animation-2 {
+  animation: wave-air 3s infinite linear;
+  animation-delay: 1s;
+}
+
+.wave-animation-3 {
+  animation: wave-air 3s infinite linear;
+  animation-delay: 2s;
+}
+
+/* Custom premium animations keyframes */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blur-reveal {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes float-blob-1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+
+@keyframes float-blob-2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1.1);
+  }
+  50% {
+    transform: translate(-30px, 40px) scale(0.95);
+  }
+}
+
+@keyframes snow-drift {
+  0% {
+    transform: translateY(-20px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(105vh) translateX(60px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes airflow {
+  0% {
+    stroke-dashoffset: 600;
+  }
+  100% {
+    stroke-dashoffset: -600;
+  }
+}
+
+/* Utility classes for premium animations */
+.animate-fade-up {
+  animation: fade-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-blur-reveal {
+  animation: blur-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-float-blob-1 {
+  animation: float-blob-1 14s ease-in-out infinite;
+}
+
+.animate-float-blob-2 {
+  animation: float-blob-2 18s ease-in-out infinite;
+}
+
+.animate-snow-1 {
+  animation: snow-drift 12s linear infinite;
+}
+
+.animate-snow-2 {
+  animation: snow-drift 16s linear infinite;
+  animation-delay: 2s;
+}
+
+.animate-snow-3 {
+  animation: snow-drift 20s linear infinite;
+  animation-delay: 4s;
+}
+
+.airflow-line-1 {
+  animation: airflow 18s linear infinite;
+}
+
+.airflow-line-2 {
+  animation: airflow 24s linear infinite;
+  animation-delay: -3s;
+}
+
+.airflow-line-3 {
+  animation: airflow 30s linear infinite;
+  animation-delay: -6s;
+}
+
+/* Global Font Scale */
+html {
+  font-size: 17px;
+}
+
+html[lang="ar"] {
+  font-size: 18px;
+}
+
+html[lang="ar"] body {
+  letter-spacing: 0;
+}
+
+/* ─── Icon visibility hardening ───────────────────────────────────────────── */
+/* Ensure Font Awesome icons never get display:none or size:0 via Tailwind */
+i[class*="fa-"] {
+  display: inline-block;
+  font-style: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Button base polish ──────────────────────────────────────────────────── */
+button, a[class*="rounded"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ─── WhatsApp button pulse glow ─────────────────────────────────────────── */
+@keyframes whatsapp-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.35); }
+  50%       { box-shadow: 0 0 0 8px rgba(37, 211, 102, 0); }
+}
+
+.btn-whatsapp {
+  animation: whatsapp-glow 2.4s ease-in-out infinite;
+}
+
+/* ─── Fade-in animation ───────────────────────────────────────────────────── */
+@keyframes fade-in {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.25s ease-out forwards;
+}
+
+/* ─── Card shadow depth ───────────────────────────────────────────────────── */
+.card-shadow {
+  box-shadow: 0 1px 3px rgba(0,0,0,.05), 0 4px 16px rgba(12,43,92,.06);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.card-shadow:hover {
+  box-shadow: 0 4px 24px rgba(12,43,92,.13);
+  transform: translateY(-2px);
+}
+
+/* ─── Section divider accent bar ─────────────────────────────────────────── */
+.accent-bar::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #0c2b5c, #e23c2d);
+  border-radius: 9999px;
+  margin: 10px auto 0;
+}
+
+/* ─── Nav link underline reveal ──────────────────────────────────────────── */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #e23c2d;
+  border-radius: 9999px;
+  transition: width 0.25s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 24px;
+}
+
+/* ─── Sticky header shadow refinement ────────────────────────────────────── */
+header.scrolled {
+  box-shadow: 0 2px 20px rgba(12,43,92,.08);
+}
+
+/* ─── Smooth image rendering ─────────────────────────────────────────────── */
+img, video {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Better focus ring ───────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #0c2b5c;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
