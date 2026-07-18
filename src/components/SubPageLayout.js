@@ -190,38 +190,33 @@ export default function SubPageLayout({ children }) {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-slate-100 py-6">
+      <footer className="bg-gradient-to-r from-primary-dark via-primary to-primary-dark text-white border-t border-white/10 py-8">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center">
             <div className="relative w-80 h-40">
-              <Image src="/images/l2.png" alt="Super Cool Logo symbol" fill className="object-contain" sizes="320px" />
+              <Image src="/images/l2.png" alt="Super Cool Logo symbol" fill className="object-contain brightness-0 invert" sizes="320px" />
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 text-sm text-slate-500 font-medium">
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 text-sm text-white/80 font-medium">
             <div className="flex items-center gap-2 text-xs sm:text-sm whitespace-nowrap">
-              <i className="fa-solid fa-location-dot text-slate-400" />
+              <i className="fa-solid fa-location-dot text-white/60" />
               <span>{t.location}</span>
             </div>
-            <div className="hidden sm:block w-[1px] h-3.5 bg-slate-200" />
+            <div className="hidden sm:block w-[1px] h-3.5 bg-white/20" />
             <div className="flex items-center gap-2">
-              <i className="fa-solid fa-envelope text-slate-400" />
-              <a href="mailto:supercool.acservices@gmail.com" className="hover:text-primary hover:underline">
-                supercool.acservices@gmail.com
+              <i className="fa-solid fa-envelope text-white/60" />
+              <a href="mailto:supercoolalhasa.acservices@gmail.com" className="hover:text-accent hover:underline text-white">
+                supercoolalhasa.acservices@gmail.com
               </a>
-            </div>
-            <div className="hidden sm:block w-[1px] h-3.5 bg-slate-200" />
-            <div className="flex items-center gap-2">
-              <i className="fa-solid fa-clock text-slate-400" />
-              <span>{t.openHours}</span>
             </div>
           </div>
 
           <div className="flex items-center gap-4 text-xs">
-            <Link href="/sitemap" className="text-slate-400 hover:text-primary font-bold">
+            <Link href="/sitemap" className="text-white/60 hover:text-accent font-bold">
               {language === "ar" ? "خريطة الموقع" : "Sitemap"}
             </Link>
-            <span className="text-slate-400 font-xs">
+            <span className="text-white/50 font-xs">
               &copy; {new Date().getFullYear()} {t.copyright}
             </span>
           </div>

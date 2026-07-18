@@ -4,6 +4,7 @@ import { useState } from "react";
 import SubPageLayout from "@/components/SubPageLayout";
 import { useLanguage } from "@/context/LanguageContext";
 import Image from "next/image";
+import Lightbox from "@/components/Lightbox";
 
 const GALLERY_IMAGES = [
   {
@@ -68,6 +69,7 @@ const GALLERY_IMAGES = [
 export default function GalleryClient() {
   const { language, t, whatsappLink } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [lightboxData, setLightboxData] = useState({ items: [], index: null });
 
   const schema = {
     "@context": "https://schema.org",
@@ -109,8 +111,8 @@ export default function GalleryClient() {
       <section className="bg-gradient-to-br from-primary to-primary-light py-16 md:py-24 text-white text-center px-6 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-sky-400/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="max-w-4xl mx-auto relative z-10">
-          <h1 className="text-3xl md:text-5xl font-black font-plus-jakarta leading-tight mb-4">
-            {language === "ar" ? "معرض أعمال تكييف سوبر كول في الأحساء والهفوف" : "AC Service Work Gallery — Al Ahsa & Al Hofuf"}
+          <h1 className="text-[28px] sm:text-4xl md:text-5xl font-black font-plus-jakarta leading-tight mb-4">
+            {language === "ar" ? "معرض أعمال تكييف سوبر كول في الأحساء والهفوف" : "AC Service Work Gallery — Al\u00a0Ahsa  Al\u00a0Hofuf"}
           </h1>
           <p className="text-slate-200 text-base md:text-lg max-w-2xl mx-auto">
             {language === "ar"
@@ -138,68 +140,70 @@ export default function GalleryClient() {
             ))}
           </div>
 
-          {/* Desktop: 3-col */}
-          <div className="hidden md:grid md:grid-cols-3 md:gap-6">
-            {GALLERY_IMAGES.filter(i => selectedCategory === "all" || i.category === selectedCategory).map((item, idx) => {
-              const isLandscape = item.width > item.height;
-              return (
-                <div key={idx} className="overflow-hidden rounded-2xl border border-slate-100 shadow-sm">
-                  {item.isVideo ? (
-                    <video src={item.src} poster="/s3.png" controls playsInline preload="metadata"
-                      className={`w-full block ${isLandscape ? "aspect-[3/2]" : "aspect-[3/4]"} object-cover`} />
-                  ) : (
-                    <Image src={item.src} alt={language === "ar" ? item.altAr : item.altEn}
-                      width={item.width} height={item.height}
-                      className={`w-full block ${isLandscape ? "aspect-[3/2]" : "aspect-[3/4]"} object-cover`}
-                      sizes="(max-width: 1200px) 50vw, 33vw" loading="lazy" />
-                  )}
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Mobile: smart pairing */}
-          <div className="block md:hidden grid grid-cols-2 gap-3">
+          {/* Masonry Columns Layout */}
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:_balance]">
             {(() => {
-              const filtered = GALLERY_IMAGES.filter(i => selectedCategory === "all" || i.category === selectedCategory);
-              const result = [];
-              const copy = [...filtered];
-              let i = 0;
-              while (i < copy.length) {
-                const cur = copy[i];
-                const isLandscape = cur.width > cur.height;
-                if (isLandscape) {
-                  result.push({ ...cur, span: "col-span-2" });
-                  i++;
-                } else {
-                  let pIdx = -1;
-                  for (let j = i + 1; j < copy.length; j++) {
-                    if (copy[j].width <= copy[j].height) { pIdx = j; break; }
-                  }
-                  if (pIdx !== -1) {
-                    result.push({ ...cur, span: "col-span-1" });
-                    result.push({ ...copy[pIdx], span: "col-span-1" });
-                    copy.splice(pIdx, 1);
-                    i++;
-                  } else {
-                    result.push({ ...cur, span: "col-span-2" });
-                    i++;
-                  }
-                }
-              }
-              return result.map((item, idx) => (
-                <div key={idx} className={`overflow-hidden rounded-xl border border-slate-100 ${item.span}`}>
-                  {item.isVideo ? (
-                    <video src={item.src} poster="/s3.png" controls playsInline preload="metadata"
-                      className={`w-full block ${item.span === "col-span-1" ? "aspect-[3/4] object-cover" : "h-auto"}`} />
-                  ) : (
-                    <Image src={item.src} alt={language === "ar" ? item.altAr : item.altEn}
-                      width={item.width} height={item.height}
-                      className={`w-full block ${item.span === "col-span-1" ? "aspect-[3/4] object-cover" : "h-auto"}`}
-                      sizes={item.span === "col-span-2" ? "100vw" : "50vw"} loading="lazy" />
-                  )}
-                </div>
-              ));
+              const filteredGallery = GALLERY_IMAGES.filter(
+                (item) => selectedCategory === "all" || item.category === selectedCategory
+              );
+              return filteredGallery.map((item, idx) => {
+                const categoryLabel = filters.find((f) => f.id === item.category);
+                return (
+                  <div
+                    key={idx}
+                    onClick={() => setLightboxData({ items: filteredGallery, index: idx })}
+                    className="break-inside-avoid mb-6 relative overflow-hidden rounded-3xl border border-slate-100 shadow-sm bg-white hover:shadow-xl transition-all duration-300 hover:scale-[1.02] group cursor-pointer"
+                  >
+                    {/* Media Content */}
+                    {item.isVideo ? (
+                      <div className="relative w-full aspect-[3/4] rounded-3xl overflow-hidden bg-slate-900 flex items-center justify-center">
+                        <Image
+                          src="/s3.png"
+                          alt={language === "ar" ? item.altAr : item.altEn}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
+                        {/* Play button overlay */}
+                        <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                          <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white text-xl group-hover:scale-110 transition-all duration-300">
+                            <i className="fa-solid fa-play" />
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <Image
+                        src={item.src}
+                        alt={language === "ar" ? item.altAr : item.altEn}
+                        width={item.width}
+                        height={item.height}
+                        className="w-full h-auto block object-cover rounded-3xl"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        loading="lazy"
+                      />
+                    )}
+
+                    {/* Category Pill Overlay */}
+                    {categoryLabel && (
+                      <div className="absolute top-4 left-4 z-10 bg-white/85 backdrop-blur-md text-primary text-xs font-black px-3 py-1.5 rounded-full shadow-sm">
+                        {language === "ar" ? categoryLabel.labelAr : categoryLabel.labelEn}
+                      </div>
+                    )}
+
+                    {/* Dynamic Hover Details Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/60 to-transparent flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-3xl">
+                      <div className="text-white">
+                        <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center mb-3">
+                          <i className={`fa-solid ${item.isVideo ? "fa-play" : "fa-magnifying-glass-plus"} text-xs`} />
+                        </div>
+                        <p className="text-sm font-bold leading-snug">
+                          {language === "ar" ? item.altAr : item.altEn}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              });
             })()}
           </div>
         </div>
@@ -220,6 +224,11 @@ export default function GalleryClient() {
           </a>
         </div>
       </section>
+      <Lightbox
+        items={lightboxData.items}
+        activeIndex={lightboxData.index}
+        onClose={() => setLightboxData({ items: [], index: null })}
+      />
     </SubPageLayout>
   );
 }

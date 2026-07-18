@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
+import Lightbox from "@/components/Lightbox";
 
 const GALLERY_IMAGES = [
   {
@@ -78,6 +79,7 @@ export default function Home() {
   const [showLangPopup, setShowLangPopup] = useState(false);
   const [activeServiceIndex, setActiveServiceIndex] = useState(-1);
   const [activeValueIndex, setActiveValueIndex] = useState(-1);
+  const [lightboxData, setLightboxData] = useState({ items: [], index: null });
 
   // Rotating Hero Text State
   const [heroTextIndex, setHeroTextIndex] = useState(0);
@@ -105,7 +107,7 @@ export default function Home() {
     [
       { text: "Best Quality ", color: "text-accent" },
       { text: "in ", color: "text-[#164085]" },
-      { text: "Al Ahsa & Hofuf.", color: "text-accent" }
+      { text: "Al\u00a0Ahsa  Al\u00a0Hofuf.", color: "text-accent" }
     ],
     [
       { text: "30+ Years ", color: "text-accent" },
@@ -640,7 +642,7 @@ export default function Home() {
               </div>
 
               {/* Headline: Rotating Texts */}
-              <h1 className="text-4xl md:text-5xl font-black leading-[1.1] tracking-tight mb-5 min-h-[120px] md:min-h-[140px] w-full animate-fade-up">
+              <h1 className="text-[32px] sm:text-4xl md:text-5xl font-black leading-[1.1] tracking-tight mb-5 min-h-[120px] md:min-h-[140px] w-full animate-fade-up">
                 <span 
                   className={`inline-block transition-all duration-300 transform ${
                     textFade 
@@ -781,16 +783,16 @@ export default function Home() {
                 {stats.map((stat, index) => (
                   <div 
                     key={index} 
-                    className="flex flex-row sm:flex-col items-center sm:items-center gap-4 sm:gap-2 group p-5 rounded-2xl hover:bg-white/8 transition-all duration-300"
+                    className="flex flex-row sm:flex-col justify-center sm:justify-start items-center gap-4 sm:gap-2 group p-5 rounded-2xl hover:bg-white/8 transition-all duration-300"
                   >
                     <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-white/15 rounded-2xl group-hover:scale-110 group-hover:bg-white/20 transition-all duration-300" style={{width:'48px',height:'48px'}}>
                       <i className={`${stat.icon} text-xl text-white`} />
                     </div>
-                    <div className="flex flex-col sm:items-center items-start gap-1">
+                    <div className="flex flex-col items-center gap-1 text-center">
                       <div className="text-xl sm:text-3xl md:text-4xl font-extrabold font-plus-jakarta tracking-tight text-white block">
                         {stat.number}
                       </div>
-                      <div className="text-[11px] sm:text-xs font-bold text-white/70 uppercase tracking-wider sm:text-center text-left block">
+                      <div className="text-[11px] sm:text-xs font-bold text-white/70 uppercase tracking-wider text-center block">
                         {stat.label}
                       </div>
                     </div>
@@ -929,7 +931,7 @@ export default function Home() {
               <p className="text-primary font-bold text-base md:text-lg leading-relaxed mb-6">
                 {language === "ar" 
                   ? "نقدم حلول تكييف موثوقة في الأحساء والهفوف لأكثر من ثلاثة عقود." 
-                  : "Delivering Reliable Air Conditioning Solutions Across Al Ahsa & Al Hofuf for More Than Three Decades."}
+                  : "Delivering Reliable Air Conditioning Solutions Across Al\u00a0Ahsa  Al\u00a0Hofuf for More Than Three Decades."}
               </p>
 
               {/* Description */}
@@ -1015,26 +1017,36 @@ export default function Home() {
 
             {/* Desktop View: Clean 3-column balanced grid */}
             <div className="hidden md:grid md:grid-cols-3 md:gap-6 items-start">
-              {GALLERY_IMAGES
-                .filter((item) => selectedGalleryCategory === "all" || item.category === selectedGalleryCategory)
-                .map((item, idx) => {
+              {(() => {
+                const desktopGalleryImages = GALLERY_IMAGES.filter(
+                  (item) => selectedGalleryCategory === "all" || item.category === selectedGalleryCategory
+                );
+                return desktopGalleryImages.map((item, idx) => {
                   const isLandscape = item.width > item.height;
                   return (
                     <div
                       key={idx}
-                      className="w-full overflow-hidden rounded-xl"
+                      className="w-full overflow-hidden rounded-xl cursor-pointer relative group"
+                      onClick={() => setLightboxData({ items: desktopGalleryImages, index: idx })}
                     >
                       {item.isVideo ? (
-                        <video
-                          src={item.src}
-                          poster="/s3.png"
-                          controls
-                          playsInline
-                          preload="metadata"
-                          className={`w-full block rounded-xl ${
-                            isLandscape ? "aspect-[3/2] object-cover" : "aspect-[3/4] object-cover"
-                          }`}
-                        />
+                        <div className={`relative w-full rounded-xl overflow-hidden bg-slate-900 flex items-center justify-center ${
+                          isLandscape ? "aspect-[3/2]" : "aspect-[3/4]"
+                        }`}>
+                          <Image
+                            src="/s3.png"
+                            alt={language === "ar" ? item.altAr : item.altEn}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                            sizes="(max-width: 1200px) 50vw, 33vw"
+                          />
+                          {/* Play button overlay */}
+                          <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                            <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white text-xl group-hover:scale-110 transition-all duration-300">
+                              <i className="fa-solid fa-play" />
+                            </div>
+                          </div>
+                        </div>
                       ) : (
                         <Image
                           src={item.src}
@@ -1048,9 +1060,16 @@ export default function Home() {
                           loading="lazy"
                         />
                       )}
+                      {/* Hover overlay search icon */}
+                      <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-xl pointer-events-none">
+                        <div className="w-10 h-10 rounded-full bg-white/30 backdrop-blur-md flex items-center justify-center text-white text-sm scale-75 group-hover:scale-100 transition-all duration-300">
+                          <i className={`fa-solid ${item.isVideo ? "fa-play" : "fa-magnifying-glass-plus"}`} />
+                        </div>
+                      </div>
                     </div>
                   );
-                })}
+                });
+              })()}
             </div>
 
             {/* Mobile View: Dynamic grid based on orientation pairing */}
@@ -1094,27 +1113,35 @@ export default function Home() {
                 return itemsWithSpans.map((item, idx) => (
                   <div
                     key={idx}
-                    className={`overflow-hidden rounded-xl ${item.colSpan}`}
+                    className={`overflow-hidden rounded-xl cursor-pointer relative group ${item.colSpan}`}
+                    onClick={() => setLightboxData({ items: itemsWithSpans, index: idx })}
                   >
                     {item.isVideo ? (
-                      <video
-                        src={item.src}
-                        poster="/s3.png"
-                        controls
-                        playsInline
-                        preload="metadata"
-                        className={`w-full block rounded-xl ${
-                          item.colSpan === "col-span-1" ? "aspect-[3/4] object-cover" : "h-auto"
-                        }`}
-                      />
+                      <div className={`relative w-full rounded-xl overflow-hidden bg-slate-900 flex items-center justify-center ${
+                        item.colSpan === "col-span-1" ? "aspect-[3/4]" : "aspect-[3/2] h-[200px]"
+                      }`}>
+                        <Image
+                          src="/s3.png"
+                          alt={language === "ar" ? item.altAr : item.altEn}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                          sizes={item.colSpan === "col-span-2" ? "100vw" : "50vw"}
+                        />
+                        {/* Play button overlay */}
+                        <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                          <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white text-base group-hover:scale-110 transition-all duration-300">
+                            <i className="fa-solid fa-play" />
+                          </div>
+                        </div>
+                      </div>
                     ) : (
                       <Image
                         src={item.src}
                         alt={language === "ar" ? item.altAr : item.altEn}
                         width={item.width}
                         height={item.height}
-                        className={`w-full block rounded-xl ${
-                          item.colSpan === "col-span-1" ? "aspect-[3/4] object-cover" : "h-auto"
+                        className={`w-full block rounded-xl transition-transform duration-500 hover:scale-[1.02] ${
+                          item.colSpan === "col-span-1" ? "aspect-[3/4] object-cover" : "h-auto object-cover"
                         }`}
                         sizes={item.colSpan === "col-span-2" ? "100vw" : "50vw"}
                         loading="lazy"
@@ -1204,37 +1231,32 @@ export default function Home() {
       </main>
 
       {/* Footer Info Bar */}
-      <footer className="bg-white border-t border-slate-100 py-6">
+      <footer className="bg-gradient-to-r from-primary-dark via-primary to-primary-dark text-white border-t border-white/10 py-8">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo element on the left */}
           <div className="flex items-center">
             <div className="relative w-80 h-40">
-              <Image src="/images/l2.png" alt="Super Cool Logo symbol" fill className="object-contain" sizes="320px" />
+              <Image src="/images/l2.png" alt="Super Cool Logo symbol" fill className="object-contain brightness-0 invert" sizes="320px" />
             </div>
           </div>
 
           {/* Core Info Row */}
-          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 text-sm text-slate-500 font-medium">
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 text-sm text-white/80 font-medium">
             <div className="flex items-center gap-2 text-xs sm:text-sm whitespace-nowrap">
-              <i className="fa-solid fa-location-dot text-slate-400" />
+              <i className="fa-solid fa-location-dot text-white/60" />
               <span>{t.location}</span>
             </div>
-            <div className="hidden sm:block w-[1px] h-3.5 bg-slate-200" />
+            <div className="hidden sm:block w-[1px] h-3.5 bg-white/20" />
             <div className="flex items-center gap-2">
-              <i className="fa-solid fa-envelope text-slate-400" />
-              <a href="mailto:supercool.acservices@gmail.com" className="hover:text-primary hover:underline">
-                supercool.acservices@gmail.com
+              <i className="fa-solid fa-envelope text-white/60" />
+              <a href="mailto:supercoolalhasa.acservices@gmail.com" className="hover:text-accent hover:underline text-white">
+                supercoolalhasa.acservices@gmail.com
               </a>
-            </div>
-            <div className="hidden sm:block w-[1px] h-3.5 bg-slate-200" />
-            <div className="flex items-center gap-2">
-              <i className="fa-solid fa-clock text-slate-400" />
-              <span>{t.openHours}</span>
             </div>
           </div>
 
           {/* Copyright text */}
-          <span className="text-xs text-slate-400">
+          <span className="text-xs text-white/50">
             &copy; {new Date().getFullYear()} {t.copyright}
           </span>
         </div>
@@ -1289,6 +1311,11 @@ export default function Home() {
         <i className="fa-solid fa-chevron-up text-sm" />
       </button>
 
+      <Lightbox
+        items={lightboxData.items}
+        activeIndex={lightboxData.index}
+        onClose={() => setLightboxData({ items: [], index: null })}
+      />
     </div>
   );
 }

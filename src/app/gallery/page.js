@@ -1,7 +1,7 @@
 import GalleryClient from "./GalleryClient";
 
 export const metadata = {
-  title: "AC Service Gallery Al Ahsa & Al Hofuf | Super Cool",
+  title: "AC Service Gallery Al Ahsa  Al Hofuf | Super Cool",
   description: "View our portfolio of professional AC installations, copper piping lay outs, and service vehicles in Al Ahsa, Al Hofuf, and Al Qarah, Saudi Arabia.",
   alternates: {
     canonical: "/gallery",

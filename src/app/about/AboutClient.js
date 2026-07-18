@@ -115,10 +115,10 @@ export default function AboutClient() {
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-sky-400/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-accent/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
         <div className="max-w-4xl mx-auto relative z-10">
-          <h1 className="text-3xl md:text-5xl font-black font-plus-jakarta leading-tight mb-4">
+          <h1 className="text-[28px] sm:text-4xl md:text-5xl font-black font-plus-jakarta leading-tight mb-4">
             {language === "ar" 
               ? "٣٠+ عاماً من خدمات التكييف عالية الجودة في الأحساء والهفوف" 
-              : "30+ Years of Quality AC Services in Al Ahsa & Al Hofuf"}
+              : "30+ Years of Quality AC Services in Al\u00a0Ahsa  Al\u00a0Hofuf"}
           </h1>
           <p className="text-slate-200 text-base md:text-lg max-w-2xl mx-auto">
             {language === "ar"
