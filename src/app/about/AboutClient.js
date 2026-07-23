@@ -118,7 +118,7 @@ export default function AboutClient() {
           <h1 className="text-[28px] sm:text-4xl md:text-5xl font-black font-plus-jakarta leading-tight mb-4">
             {language === "ar" 
               ? "٣٠+ عاماً من خدمات التكييف عالية الجودة في الأحساء والهفوف" 
-              : "30+ Years of Quality AC Services in Al\u00a0Ahsa  Al\u00a0Hofuf"}
+              : "30+ Years of Quality AC Services in Al\u00a0Ahsa, Al\u00a0Hofuf"}
           </h1>
           <p className="text-slate-200 text-base md:text-lg max-w-2xl mx-auto">
             {language === "ar"

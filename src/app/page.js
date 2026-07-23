@@ -4,8 +4,114 @@ import { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import Lightbox from "@/components/Lightbox";
+import LeadCaptureForm from "@/components/LeadCaptureForm";
+import CustomerRegisterForm from "@/components/CustomerRegisterForm";
 
 const GALLERY_IMAGES = [
+  {
+    src: "/c1.png",
+    category: "vehicles",
+    altEn: "Super Cool AC service vehicle Saudi Arabia",
+    altAr: "سيارات الخدمة سوبر كول في السعودية",
+    width: 1672,
+    height: 941
+  },
+  {
+    src: "/c2.png",
+    category: "vehicles",
+    altEn: "Super Cool AC service vehicle Saudi Arabia",
+    altAr: "سيارات الخدمة سوبر كول في السعودية",
+    width: 941,
+    height: 1672
+  },
+  {
+    src: "/c3.png",
+    category: "vehicles",
+    altEn: "Super Cool AC service vehicle Saudi Arabia",
+    altAr: "سيارات الخدمة سوبر كول في السعودية",
+    width: 1536,
+    height: 1024
+  },
+  {
+    src: "/w1.png",
+    category: "installation",
+    altEn: "Super Cool AC installation project Al Ahsa",
+    altAr: "مشروع تركيب مكيفات سوبر كول في الأحساء",
+    width: 1080,
+    height: 1440
+  },
+  {
+    src: "/w2.png",
+    category: "installation",
+    altEn: "Professional split AC mounting Al Hofuf",
+    altAr: "تركيب مكيفات سبلت احترافي في الهفوف",
+    width: 1080,
+    height: 1440
+  },
+  {
+    src: "/w4.png",
+    category: "installation",
+    altEn: "AC unit installation & outdoor mounting Al Ahsa",
+    altAr: "تركيب وتثبيت مكيفات خارجية في الأحساء",
+    width: 1080,
+    height: 1440
+  },
+  {
+    src: "/w5.png",
+    category: "installation",
+    altEn: "Completed AC installation work Super Cool",
+    altAr: "أعمال تركيب مكيفات مكتملة من سوبر كول",
+    width: 1080,
+    height: 1440
+  },
+  {
+    src: "/w6.png",
+    category: "installation",
+    altEn: "AC unit installation & indoor mounting Al Ahsa",
+    altAr: "تركيب مكيفات دقيقة داخلية في الأحساء",
+    width: 1080,
+    height: 1440
+  },
+  {
+    src: "/w7.png",
+    category: "installation",
+    altEn: "Professional AC installation project Super Cool",
+    altAr: "مشروع تركيب مكيفات متكامل في الأحساء",
+    width: 1080,
+    height: 1440
+  },
+  {
+    src: "/w10.png",
+    category: "installation",
+    altEn: "Super Cool AC installation project Al Ahsa",
+    altAr: "مشروع تركيب مكيفات سوبر كول في الأحساء",
+    width: 1080,
+    height: 1440
+  },
+  {
+    src: "/w11.png",
+    category: "installation",
+    altEn: "Professional split AC mounting Al Hofuf",
+    altAr: "تركيب مكيفات سبلت احترافي في الهفوف",
+    width: 1080,
+    height: 1440
+  },
+  {
+    src: "/w12.png",
+    category: "installation",
+    altEn: "AC unit installation & outdoor mounting Al Ahsa",
+    altAr: "تركيب وتثبيت مكيفات خارجية في الأحساء",
+    width: 1080,
+    height: 1440
+  },
+  {
+    src: "/w13.png",
+    category: "installation",
+    altEn: "Completed AC installation work Super Cool",
+    altAr: "أعمال تركيب مكيفات مكتملة من سوبر كول",
+    width: 1080,
+    height: 1440
+  },
   {
     src: "/s2.png",
     category: "installation",
@@ -38,30 +144,6 @@ const GALLERY_IMAGES = [
     altAr: "فيديو أعمال تركيب مكيفات سوبر كول في الأحساء",
     width: 478,
     height: 850
-  },
-  {
-    src: "/c1.png",
-    category: "vehicles",
-    altEn: "Super Cool AC service vehicle Saudi Arabia",
-    altAr: "سيارات الخدمة سوبر كول في السعودية",
-    width: 1672,
-    height: 941
-  },
-  {
-    src: "/c2.png",
-    category: "vehicles",
-    altEn: "Super Cool AC service vehicle Saudi Arabia",
-    altAr: "سيارات الخدمة سوبر كول في السعودية",
-    width: 941,
-    height: 1672
-  },
-  {
-    src: "/c3.png",
-    category: "vehicles",
-    altEn: "Super Cool AC service vehicle Saudi Arabia",
-    altAr: "سيارات الخدمة سوبر كول في السعودية",
-    width: 1536,
-    height: 1024
   }
 ];
 
@@ -73,7 +155,7 @@ export default function Home() {
   const [showCallModal, setShowCallModal] = useState(false);
   const [selectedGalleryCategory, setSelectedGalleryCategory] = useState("all");
   
-  // New States for Splash Screen & Language Popup
+  // States for Splash Screen & Language Popup
   const [showSplash, setShowSplash] = useState(true);
   const [splashFade, setSplashFade] = useState(false);
   const [showLangPopup, setShowLangPopup] = useState(false);
@@ -107,7 +189,7 @@ export default function Home() {
     [
       { text: "Best Quality ", color: "text-accent" },
       { text: "in ", color: "text-[#164085]" },
-      { text: "Al\u00a0Ahsa  Al\u00a0Hofuf.", color: "text-accent" }
+      { text: "Al\u00a0Ahsa, Al\u00a0Hofuf.", color: "text-accent" }
     ],
     [
       { text: "30+ Years ", color: "text-accent" },
@@ -135,12 +217,10 @@ export default function Home() {
       return;
     }
 
-    // Start splash screen fade out after 1.5 seconds
     const fadeTimer = setTimeout(() => {
       setSplashFade(true);
     }, 1500);
 
-    // Completely remove splash screen and show language popup after 2 seconds
     const removeTimer = setTimeout(() => {
       setShowSplash(false);
       setShowLangPopup(true);
@@ -152,7 +232,7 @@ export default function Home() {
     };
   }, []);
 
-  // Track scroll position to change header background
+  // Track scroll position
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 20) {
@@ -169,7 +249,7 @@ export default function Home() {
   useEffect(() => {
     const sections = document.querySelectorAll("section[id]");
     const handleScrollSpy = () => {
-      const scrollPosition = window.scrollY + 200; // Offset for header
+      const scrollPosition = window.scrollY + 200;
       sections.forEach((section) => {
         const top = section.offsetTop;
         const height = section.offsetHeight;
@@ -183,15 +263,13 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScrollSpy);
   }, []);
 
-  // Mobile scroll-to-hover card trigger (on viewport centering)
+  // Mobile scroll-to-hover card trigger
   useEffect(() => {
     const handleScrollHover = () => {
-      if (window.innerWidth >= 768) {
-        return;
-      }
+      if (window.innerWidth >= 768) return;
       const viewportCenter = window.innerHeight / 2;
 
-      // 1. Service Cards
+      // Service Cards
       const serviceCards = document.querySelectorAll("[data-service-card]");
       let closestServiceIdx = -1;
       let minServiceDist = Infinity;
@@ -210,7 +288,7 @@ export default function Home() {
         setActiveServiceIndex(-1);
       }
 
-      // 2. Value Cards
+      // Value Cards
       const valueCards = document.querySelectorAll("[data-value-card]");
       let closestValueIdx = -1;
       let minValueDist = Infinity;
@@ -296,6 +374,12 @@ export default function Home() {
 
   const values = [
     {
+      title: t.valCustTitle,
+      desc: t.valCustDesc,
+      icon: "fa-solid fa-smile",
+      textColor: "bg-blue-50/60 border-blue-100 text-blue-500",
+    },
+    {
       title: t.valTechTitle,
       desc: t.valTechDesc,
       icon: "fa-solid fa-user-shield",
@@ -313,18 +397,12 @@ export default function Home() {
       icon: "fa-solid fa-medal",
       textColor: "bg-emerald-50/60 border-emerald-100 text-emerald-500",
     },
-    {
-      title: t.valPriceTitle,
-      desc: t.valPriceDesc,
-      icon: "fa-solid fa-tag",
-      textColor: "bg-rose-50/60 border-rose-100 text-rose-500",
-    },
   ];
 
   return (
     <div className={`flex flex-col min-h-screen overflow-x-hidden ${language === "ar" ? "font-sans text-right" : "text-left"}`}>
       
-      {/* 1. Splash Screen */}
+      {/* Splash Screen */}
       {showSplash && (
         <div 
           className={`fixed inset-0 z-[999] flex items-center justify-center bg-white transition-all duration-500 ease-out ${
@@ -344,12 +422,10 @@ export default function Home() {
         </div>
       )}
 
-      {/* 2. Language Choice Popup */}
+      {/* Language Choice Popup */}
       {showLangPopup && (
         <div className="fixed inset-0 z-[998] flex items-center justify-center bg-slate-900/60 backdrop-blur-md p-4 animate-fade-in">
-          <div className="bg-white rounded-3xl p-8 max-w-md w-full text-center shadow-2xl border border-slate-100/50 flex flex-col items-center">
-            
-            {/* Logo in popup */}
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full text-center shadow-2xl border border-slate-100/50 flex flex-col items-center">
             <div className="relative w-16 h-16 mb-4">
               <Image src="/images/logo.png" alt="Super Cool Logo symbol" fill className="object-contain" sizes="64px" />
             </div>
@@ -361,7 +437,7 @@ export default function Home() {
               اختر اللغة
             </h3>
             
-            <p className="text-sm text-slate-500 mb-8 max-w-xs leading-relaxed">
+            <p className="text-sm text-slate-500 mb-6 max-w-xs leading-relaxed">
               Please choose a language to continue to the website.<br />
               يرجى اختيار اللغة للمتابعة للموقع.
             </p>
@@ -372,7 +448,7 @@ export default function Home() {
                   setLanguage("en");
                   setShowLangPopup(false);
                 }}
-                className="py-4 bg-primary hover:bg-primary-light text-white font-extrabold rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer text-lg font-plus-jakarta"
+                className="py-3.5 bg-primary hover:bg-primary-light text-white font-extrabold rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer text-base sm:text-lg font-plus-jakarta"
               >
                 English
               </button>
@@ -381,7 +457,7 @@ export default function Home() {
                   setLanguage("ar");
                   setShowLangPopup(false);
                 }}
-                className="py-4 bg-accent hover:bg-accent-hover text-white font-extrabold rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer text-lg font-plus-jakarta"
+                className="py-3.5 bg-accent hover:bg-accent-hover text-white font-extrabold rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer text-base sm:text-lg font-plus-jakarta"
               >
                 العربية
               </button>
@@ -390,7 +466,7 @@ export default function Home() {
         </div>
       )}
 
-      {/* Header / Navbar (formatted to be thinner) */}
+      {/* Header / Navbar */}
       <header 
         className={`sticky top-0 z-50 w-full transition-all duration-300 ${
           scrolled 
@@ -399,9 +475,8 @@ export default function Home() {
         }`}
       >
         {/* Desktop Header */}
-        <div className="hidden md:flex max-w-7xl mx-auto px-6 items-center justify-between w-full">
-          {/* Logo container using symbol logo */}
-          <a href="#home" className={`flex items-center group ${language === "ar" ? "md:-mr-8 lg:-mr-14" : "md:-ml-8 lg:-ml-14"}`}>
+        <div className="hidden md:flex max-w-7xl mx-auto px-4 sm:px-6 md:px-8 items-center justify-between w-full">
+          <a href="#home" className="flex items-center group">
             <div className="relative w-10 h-10 transition-transform duration-300 group-hover:rotate-12 flex-shrink-0">
               <Image 
                 src="/images/logo.png" 
@@ -437,12 +512,11 @@ export default function Home() {
             ))}
           </nav>
 
-          {/* Header Action Buttons & Language Switcher */}
+          {/* Action Buttons & Language Switcher */}
           <div className="flex items-center gap-4">
-            {/* Quick Language Toggle */}
             <button 
               onClick={() => setLanguage(language === "en" ? "ar" : "en")}
-              className="px-4 py-2.5 rounded-full border border-slate-200 hover:bg-slate-50 text-sm font-extrabold text-slate-700 cursor-pointer transition-colors"
+              className="px-4 py-2 rounded-full border border-slate-200 hover:bg-slate-50 text-sm font-extrabold text-slate-700 cursor-pointer transition-colors"
             >
               {language === "en" ? "العربية" : "English"}
             </button>
@@ -460,9 +534,8 @@ export default function Home() {
         </div>
 
         {/* Mobile Header */}
-        <div className="flex md:hidden items-center justify-between w-full px-6">
-          {/* Logo (Left) */}
-          <a href="#home" className={`flex items-center group ${language === "ar" ? "-mr-2" : "-ml-2"}`}>
+        <div className="flex md:hidden items-center justify-between w-full px-4 sm:px-6">
+          <a href="#home" className="flex items-center group">
             <div className="relative w-8 h-8 flex-shrink-0">
               <Image 
                 src="/images/logo.png" 
@@ -478,11 +551,10 @@ export default function Home() {
             </span>
           </a>
 
-          {/* Lang Switcher & Hamburger Menu (Right) */}
           <div className="flex items-center gap-2">
             <button 
               onClick={() => setLanguage(language === "en" ? "ar" : "en")}
-              className="px-3.5 py-2 rounded-lg bg-slate-50 border border-slate-200/60 hover:bg-slate-100 text-xs font-black text-slate-700 cursor-pointer transition-all duration-200 leading-none"
+              className="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200/60 hover:bg-slate-100 text-xs font-black text-slate-700 cursor-pointer transition-all duration-200 leading-none"
             >
               {language === "en" ? "عربي" : "EN"}
             </button>
@@ -543,10 +615,10 @@ export default function Home() {
 
       <main className="flex-grow">
         
-        {/* Hero Section */}
-        <section id="home" className="relative min-h-[580px] h-[100svh] md:h-[90vh] md:min-h-[700px] flex items-start pt-10 md:pt-24 bg-white overflow-hidden border-b border-slate-100">
+        {/* Hero Section - Exactly 100% Viewport Height With Header */}
+        <section id="home" className="relative min-h-[calc(100dvh-64px)] md:min-h-[calc(100vh-80px)] pt-1 sm:pt-2 md:pt-4 pb-12 sm:pb-16 md:pb-20 flex items-center justify-center bg-white overflow-hidden border-b border-slate-100/80">
           
-          {/* Mobile Background Image (b.png - full height and width) */}
+          {/* Mobile Background Image */}
           <div className="absolute inset-0 z-0 block md:hidden">
             <Image 
               src="/images/b.png" 
@@ -564,85 +636,27 @@ export default function Home() {
             <div className="absolute top-[30%] left-[20%] w-[250px] md:w-[450px] h-[250px] md:h-[450px] rounded-full bg-blue-100/20 blur-3xl" />
           </div>
 
-          {/* Desktop Swirl lines on the right side */}
-          <div className="absolute top-0 end-0 bottom-0 w-[55%] z-0 hidden md:block pointer-events-none opacity-60">
-            <svg className="w-full h-full" viewBox="0 0 500 800" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-              {/* Soft Swirl Curve Backdrop */}
-              <path 
-                d="M 150,0 C 250,200 450,450 500,800" 
-                stroke="url(#swirl-grad-1)" 
-                strokeWidth="80" 
-                strokeLinecap="round"
-                opacity="0.12" 
-              />
-              <path 
-                d="M 170,0 C 270,180 430,420 500,800" 
-                stroke="url(#swirl-grad-2)" 
-                strokeWidth="3" 
-                className="airflow-line-1"
-              />
-              <path 
-                d="M 220,0 C 300,160 410,380 500,800" 
-                stroke="url(#swirl-grad-2)" 
-                strokeWidth="1.2" 
-                className="airflow-line-2"
-              />
-              <path 
-                d="M 100,0 C 200,220 460,490 500,800" 
-                stroke="url(#swirl-grad-3)" 
-                strokeWidth="1.5" 
-                className="airflow-line-3"
-              />
-              <defs>
-                <linearGradient id="swirl-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#bae6fd" stopOpacity="0.4" />
-                  <stop offset="50%" stopColor="#7dd3fc" stopOpacity="0.5" />
-                  <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.1" />
-                </linearGradient>
-                <linearGradient id="swirl-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#38bdf8" stopOpacity="0" />
-                  <stop offset="40%" stopColor="#0ea5e9" stopOpacity="0.6" />
-                  <stop offset="80%" stopColor="#0284c7" stopOpacity="0.3" />
-                  <stop offset="100%" stopColor="#0369a1" stopOpacity="0" />
-                </linearGradient>
-                <linearGradient id="swirl-grad-3" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#7dd3fc" stopOpacity="0" />
-                  <stop offset="50%" stopColor="#38bdf8" stopOpacity="0.3" />
-                  <stop offset="100%" stopColor="#0ea5e9" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-
-          {/* Desktop floating cooling particles */}
-          <div className="absolute inset-0 z-0 hidden md:block overflow-hidden pointer-events-none opacity-20">
-            <span className="absolute top-[12%] left-[25%] text-sky-400/20 text-base animate-snow-1">❄</span>
-            <span className="absolute top-[28%] left-[78%] text-sky-300/25 text-xs animate-snow-2">❄</span>
-            <span className="absolute top-[52%] left-[12%] text-sky-200/20 text-xs animate-snow-3">❄</span>
-            <span className="absolute top-[68%] left-[68%] text-sky-400/15 text-sm animate-snow-1" style={{ animationDelay: '-5s' }}>❄</span>
-          </div>
-
-          {/* Content Layout (Everything aligned to the start/left with max-width 360px) */}
-          <div className="relative z-10 max-w-[1200px] mx-auto px-6 w-full flex justify-start md:justify-center pt-2 md:pt-0 animate-blur-reveal">
-            <div className="w-full max-w-[360px] md:max-w-2xl flex flex-col items-start text-start md:items-center md:text-center">
+          {/* Content Layout - Shifted Further Upwards */}
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-8 w-full flex justify-start -mt-8 sm:-mt-12 md:-mt-16 animate-blur-reveal">
+            <div className="w-full max-w-xl md:max-w-3xl flex flex-col items-start text-start">
               
               {/* RAHMA Estd. Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-primary/5 to-accent/5 border border-slate-200/60 shadow-sm mb-5 animate-fade-up">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-primary/5 to-accent/5 border border-slate-200/60 shadow-sm mb-2.5 sm:mb-3.5 animate-fade-up">
                 <span className="text-xs font-black tracking-wider text-primary uppercase font-plus-jakarta">
                   {language === "ar" ? "مؤسسة رحمة" : "RAHMA Estd."}
                 </span>
               </div>
 
-              {/* 30+ YEARS OF TRUST (Navy) */}
-              <div className="flex flex-col items-start md:items-center gap-1 mb-6 animate-fade-up">
-                <span className="text-sm font-black tracking-widest text-primary uppercase">
+              {/* 30+ YEARS OF TRUST */}
+              <div className="flex flex-col items-start gap-1 mb-3.5 sm:mb-4 animate-fade-up">
+                <span className="text-xs sm:text-sm font-black tracking-widest text-primary uppercase">
                   {t.yearsOfTrust}
                 </span>
                 <span className="w-8 h-[2px] bg-primary rounded-full" />
               </div>
 
               {/* Headline: Rotating Texts */}
-              <h1 className="text-[32px] sm:text-4xl md:text-5xl font-black leading-[1.1] tracking-tight mb-5 min-h-[120px] md:min-h-[140px] w-full animate-fade-up">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl font-black leading-[1.15] tracking-tight mb-3 sm:mb-4 min-h-[85px] sm:min-h-[110px] md:min-h-[120px] w-full text-start animate-fade-up">
                 <span 
                   className={`inline-block transition-all duration-300 transform ${
                     textFade 
@@ -658,24 +672,24 @@ export default function Home() {
                 </span>
               </h1>
 
-              {/* Bullet list card divider styling */}
-              <div className="border-s-2 md:border-s-0 border-sky-400/80 ps-4 md:ps-0 text-slate-500 font-semibold text-sm md:text-base leading-relaxed mb-12 animate-fade-up" style={{ animationDelay: '0.4s' }}>
+              {/* Bullet list subtext */}
+              <div className="text-slate-500 font-semibold text-xs sm:text-sm md:text-base leading-relaxed mb-5 sm:mb-7 max-w-xl text-start animate-fade-up" style={{ animationDelay: '0.4s' }}>
                 {t.acBullet1}<br />
                 {t.acBullet2}
               </div>
 
               {/* Navigation Action CTA Buttons */}
-              <div className="flex flex-col gap-3.5 w-full md:max-w-xs animate-fade-up" style={{ animationDelay: '0.5s' }}>
+              <div className="flex flex-col sm:flex-row gap-3.5 w-full max-w-md sm:max-w-lg justify-start animate-fade-up mb-2 sm:mb-4" style={{ animationDelay: '0.5s' }}>
                 {/* Call Support Dial Button */}
                 <button 
                   onClick={() => setShowCallModal(true)}
-                  className="flex items-center justify-between p-4 bg-primary hover:bg-[#164085] text-white font-extrabold rounded-2xl w-full text-start shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+                  className="flex-1 flex items-center justify-between p-3.5 sm:p-4 bg-primary hover:bg-[#164085] text-white font-extrabold rounded-2xl text-start shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-xl bg-white/15 flex items-center justify-center flex-shrink-0">
                       <i className="fa-solid fa-phone text-sm text-white" />
                     </div>
-                    <span className="text-sm font-black tracking-wide text-white">
+                    <span className="text-xs sm:text-sm font-black tracking-wide text-white">
                       {language === "ar" ? "اتصل الآن" : "Call Now"} <span dir="ltr" className="opacity-80">056 / 050</span>
                     </span>
                   </div>
@@ -687,13 +701,13 @@ export default function Home() {
                   href={whatsappLink}
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center justify-between p-4 bg-primary hover:bg-[#164085] text-white rounded-2xl w-full text-start shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+                  className="flex-1 flex items-center justify-between p-3.5 sm:p-4 bg-primary hover:bg-[#164085] text-white rounded-2xl text-start shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-xl bg-[#25d366] flex items-center justify-center flex-shrink-0">
                       <i className="fa-brands fa-whatsapp text-white text-base" />
                     </div>
-                    <span className="text-sm font-black text-white">{t.whatsAppUs}</span>
+                    <span className="text-xs sm:text-sm font-black text-white">{t.whatsAppUs}</span>
                   </div>
                   <i className={`fa-solid ${language === "ar" ? "fa-arrow-left" : "fa-arrow-right"} text-xs text-white/70`} />
                 </a>
@@ -703,22 +717,22 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Services Section */}
-        <section id="services" className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-primary">
+        {/* Separate Independent Services Section Below Hero */}
+        <section id="services" className="py-16 md:py-24 bg-white relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary">
               {t.completeAcSolutions}
             </h2>
-            <div className="flex gap-1 justify-center my-3 mb-10">
+            <div className="flex gap-1 justify-center my-3 mb-8 md:mb-10">
               <span className="w-10 h-1 bg-primary rounded-full" />
               <span className="w-6 h-1 bg-accent rounded-full" />
             </div>
-            <p className="text-slate-500 font-medium text-base mb-12">
+            <p className="text-slate-500 font-semibold text-xs sm:text-sm md:text-base max-w-2xl mx-auto mb-10 md:mb-12">
               {t.subtext}
             </p>
 
-            {/* Premium Dynamic Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Services Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
               {services.map((service, index) => (
                 <div 
                   key={index}
@@ -729,13 +743,8 @@ export default function Home() {
                       : 'border-slate-100 hover:border-slate-200 shadow-sm hover:shadow-xl sm:hover:-translate-y-2'
                   }`}
                 >
-                  {/* Top hover accent bar */}
                   <div className="absolute top-0 left-0 w-full h-[3px] bg-slate-50 group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-accent transition-colors duration-300 hidden sm:block" />
                   
-                  {/* Decorative corner glow */}
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-blue-50 to-transparent opacity-0 group-hover:opacity-100 rounded-tr-2xl transition-opacity duration-300 hidden sm:block" />
-                  
-                  {/* Styled Premium Icon Container */}
                   <div className={`relative w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 flex items-center justify-center rounded-xl sm:rounded-2xl transition-all duration-300 shadow-sm ${
                     index === activeServiceIndex 
                       ? 'bg-primary text-white scale-110' 
@@ -746,19 +755,17 @@ export default function Home() {
                     }`} />
                   </div>
 
-                  {/* Text content wrapper */}
                   <div className="flex-grow flex flex-col items-start sm:items-center">
                     <h3 className={`font-plus-jakarta font-extrabold text-primary sm:mb-2 group-hover:text-primary transition-colors text-start sm:text-center ${
-                       language === "ar" ? "text-base sm:text-lg md:text-xl font-bold" : "text-sm sm:text-base"
+                       language === "ar" ? "text-base sm:text-lg md:text-xl font-bold" : "text-sm sm:text-base md:text-lg"
                      }`}>
                       {service.title}
                     </h3>
-                    <p className="text-slate-500 leading-relaxed sm:mb-6 text-start sm:text-center text-sm font-semibold">
+                    <p className="text-slate-500 leading-relaxed sm:mb-6 text-start sm:text-center text-xs sm:text-sm font-semibold">
                       {service.desc}
                     </p>
                   </div>
                   
-                  {/* Slide-in arrow indicator */}
                   <div className="hidden sm:flex items-center justify-center gap-1.5 text-xs font-bold text-slate-400 group-hover:text-accent transition-colors duration-300 cursor-pointer">
                     <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                       {language === "ar" ? "احجز الآن" : "Book Now"}
@@ -771,28 +778,34 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Dedicated Book a Service Section */}
+        <section id="book-service" className="py-14 sm:py-18 bg-slate-50/60 border-t border-slate-100">
+          <div className="max-w-xl md:max-w-2xl mx-auto px-4 sm:px-6">
+            <LeadCaptureForm />
+          </div>
+        </section>
+
         {/* Stats Banner Section */}
-        <section className="bg-white">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="relative bg-primary rounded-3xl p-8 md:p-12 shadow-xl shadow-primary/10 overflow-hidden">
-              {/* Background gradient design details */}
+        <section className="bg-white py-4">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+            <div className="relative bg-primary rounded-3xl p-6 sm:p-8 md:p-12 shadow-xl shadow-primary/10 overflow-hidden">
               <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-white/5 rounded-full blur-3xl" />
               <div className="absolute -bottom-10 -left-10 w-[200px] h-[200px] bg-accent/10 rounded-full blur-2xl" />
 
-              <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-8 text-center text-white">
+              <div className="relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 text-center text-white">
                 {stats.map((stat, index) => (
                   <div 
                     key={index} 
-                    className="flex flex-row sm:flex-col justify-center sm:justify-start items-center gap-4 sm:gap-2 group p-5 rounded-2xl hover:bg-white/8 transition-all duration-300"
+                    className="flex flex-col items-center justify-center gap-2 p-3 sm:p-5 rounded-2xl hover:bg-white/8 transition-all duration-300"
                   >
-                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-white/15 rounded-2xl group-hover:scale-110 group-hover:bg-white/20 transition-all duration-300" style={{width:'48px',height:'48px'}}>
-                      <i className={`${stat.icon} text-xl text-white`} />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 flex items-center justify-center bg-white/15 rounded-2xl group-hover:scale-110 group-hover:bg-white/20 transition-all duration-300">
+                      <i className={`${stat.icon} text-base sm:text-xl text-white`} />
                     </div>
-                    <div className="flex flex-col items-center gap-1 text-center">
-                      <div className="text-xl sm:text-3xl md:text-4xl font-extrabold font-plus-jakarta tracking-tight text-white block">
+                    <div className="flex flex-col items-center gap-0.5 text-center">
+                      <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold font-plus-jakarta tracking-tight text-white block">
                         {stat.number}
                       </div>
-                      <div className="text-[11px] sm:text-xs font-bold text-white/70 uppercase tracking-wider text-center block">
+                      <div className="text-[10px] sm:text-xs font-bold text-white/80 uppercase tracking-wider text-center block">
                         {stat.label}
                       </div>
                     </div>
@@ -804,31 +817,29 @@ export default function Home() {
         </section>
 
         {/* Why Choose Us Section */}
-        <section id="about" className="py-20 bg-slate-50/50">
-          <div className="max-w-7xl mx-auto px-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-primary">
+        <section id="about" className="py-16 md:py-24 bg-slate-50/50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary">
               {t.comfortPriority}
             </h2>
-            <div className="flex gap-1 justify-center my-3 mb-10">
+            <div className="flex gap-1 justify-center my-3 mb-8 md:mb-10">
               <span className="w-10 h-1 bg-primary rounded-full" />
               <span className="w-6 h-1 bg-accent rounded-full" />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 mt-8 md:mt-12">
               {values.map((val, index) => (
                 <div 
                   key={index}
                   data-value-card={index}
-                  className={`group relative flex flex-row sm:flex-col items-center bg-white border rounded-2xl p-4 sm:p-8 text-start sm:text-center transition-all duration-300 overflow-hidden gap-4 sm:gap-0 ${
+                  className={`group relative flex flex-row sm:flex-col items-center bg-white border rounded-2xl p-4 sm:p-6 md:p-8 text-start sm:text-center transition-all duration-300 overflow-hidden gap-4 sm:gap-0 ${
                     index === activeValueIndex 
                       ? 'border-slate-300/80 shadow-md scale-[1.02]' 
                       : 'border-slate-100 hover:border-slate-200/80 shadow-sm hover:shadow-xl sm:hover:-translate-y-2'
                   }`}
                 >
-                  {/* Top hover accent bar */}
                   <div className="absolute top-0 left-0 w-full h-[3px] bg-slate-50 group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-accent transition-colors duration-300 hidden sm:block" />
                   
-                  {/* Icon Container */}
                   <div className={`w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 flex items-center justify-center rounded-xl sm:rounded-2xl sm:mb-6 transition-all duration-300 shadow-sm ${
                     index === activeValueIndex 
                       ? 'bg-primary text-white rotate-6' 
@@ -839,14 +850,13 @@ export default function Home() {
                     }`} />
                   </div>
                   
-                  {/* Text content wrapper */}
                   <div className="flex-grow flex flex-col items-start sm:items-center">
                     <h3 className={`font-plus-jakarta font-extrabold text-primary sm:mb-2 group-hover:text-primary transition-colors text-start sm:text-center ${
-                       language === "ar" ? "text-base sm:text-lg md:text-xl font-bold" : "text-sm sm:text-base"
-                     }`}>
+                       language === "ar" ? "text-base sm:text-lg font-bold" : "text-sm sm:text-base font-bold"
+                      }`}>
                       {val.title}
                     </h3>
-                    <p className="text-slate-500 leading-relaxed text-start sm:text-center text-sm font-semibold">
+                    <p className="text-slate-500 leading-relaxed text-start sm:text-center text-xs sm:text-sm font-semibold">
                       {val.desc}
                     </p>
                   </div>
@@ -856,136 +866,151 @@ export default function Home() {
           </div>
         </section>
 
-        {/* A Legacy of Trust Section */}
-        <section id="legacy" className="py-20 md:py-28 bg-white border-b border-slate-100">
-          <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 items-center">
+        {/* FULLY RESPONSIVE OWNER PHOTOS & LEGACY OF TRUST SECTION */}
+        <section id="legacy" className="py-16 md:py-24 bg-white border-b border-slate-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 w-full flex flex-col gap-10 md:gap-14">
             
-            {/* Left Column: Rounded featured images (amjad.png on top, asgar.png below) */}
-            <div className="lg:col-span-5 flex flex-col items-center text-center animate-fade-up gap-10">
-              
-              <h3 className="text-2xl md:text-3xl font-black text-primary leading-tight">
+            {/* Section Header */}
+            <div className="text-center max-w-3xl mx-auto">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary leading-tight mb-2">
                 {language === "ar" ? "الثقة التي بُنيت عبر السنين" : "Behind SuperCool"}
-              </h3>
-
-              {/* 1. Amjad Imam */}
-              <div className="flex flex-col items-center text-center w-full max-w-sm bg-[#f8fafc]/80 hover:bg-white rounded-3xl p-5 border border-slate-100/70 hover:border-slate-200/80 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
-                <div className="relative w-full aspect-[4/5] rounded-[18px] overflow-hidden mb-4 shadow-sm">
-                  <Image 
-                    src="/images/amjad.png" 
-                    alt="Amjad Imam" 
-                    fill 
-                    className="object-cover transition-transform duration-500 group-hover:scale-105" 
-                    sizes="(max-width: 768px) 100vw, 380px"
-                  />
-                </div>
-                <div className="font-extrabold text-primary text-xl leading-tight group-hover:text-primary-light transition-colors">
-                  Amjad Imam
-                </div>
-                <div className="text-sm font-bold text-accent mt-1">
-                  {language === "ar" ? "خبرة ٣٠+ عاماً" : "30+ Years Experience"}
-                </div>
-                <a 
-                  href="https://wa.me/966509811258"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-whatsapp inline-flex items-center gap-2 mt-3 px-5 py-2.5 rounded-full bg-[#25d366] hover:bg-[#1fb955] text-white transition-all duration-300 text-xs font-black shadow-md"
-                >
-                  <i className="fa-brands fa-whatsapp text-base text-white" />
-                  <span dir="ltr">+966 50 981 1258</span>
-                </a>
+              </h2>
+              <div className="flex gap-1 justify-center my-3 mb-4">
+                <span className="w-10 h-1 bg-primary rounded-full" />
+                <span className="w-6 h-1 bg-accent rounded-full" />
               </div>
-
-              {/* 2. Asgar Imam */}
-              <div className="flex flex-col items-center text-center w-full max-w-sm bg-[#f8fafc]/80 hover:bg-white rounded-3xl p-5 border border-slate-100/70 hover:border-slate-200/80 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
-                <div className="relative w-full aspect-[4/5] rounded-[18px] overflow-hidden mb-4 shadow-sm">
-                  <Image 
-                    src="/images/asgar.png" 
-                    alt="Asgar Imam" 
-                    fill 
-                    className="object-cover transition-transform duration-500 group-hover:scale-105" 
-                    sizes="(max-width: 768px) 100vw, 380px"
-                  />
-                </div>
-                <div className="font-extrabold text-primary text-xl leading-tight group-hover:text-primary-light transition-colors">
-                  Asgar Imam
-                </div>
-                <div className="text-sm font-bold text-accent mt-1">
-                  {language === "ar" ? "خبرة ٣٠+ عاماً" : "30+ Years Experience"}
-                </div>
-                <a 
-                  href="https://wa.me/966566706358"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-whatsapp inline-flex items-center gap-2 mt-3 px-5 py-2.5 rounded-full bg-[#25d366] hover:bg-[#1fb955] text-white transition-all duration-300 text-xs font-black shadow-md"
-                >
-                  <i className="fa-brands fa-whatsapp text-base text-white" />
-                  <span dir="ltr">+966 56 670 6358</span>
-                </a>
-              </div>
-
+              <p className="text-slate-500 font-semibold text-xs sm:text-sm md:text-base leading-relaxed">
+                {language === "ar" 
+                  ? "لأكثر من ٣٠ عاماً، نلتزم بتقديم أفضل خدمات التكييف برعاية كادرنا الإداري والفني المعتمد." 
+                  : "Dedicated leadership with over 30 years of hands-on expertise serving homes and businesses across Al Ahsa."}
+              </p>
             </div>
 
-            {/* Right Column: Copy & Trust Stats */}
-            <div className="lg:col-span-7 flex flex-col items-start text-start lg:items-start lg:text-start animate-fade-up w-full" style={{ animationDelay: '0.2s' }}>
-              {/* Subheading */}
-              <p className="text-primary font-bold text-base md:text-lg leading-relaxed mb-6">
-                {language === "ar" 
-                  ? "نقدم حلول تكييف موثوقة في الأحساء والهفوف لأكثر من ثلاثة عقود." 
-                  : "Delivering Reliable Air Conditioning Solutions Across Al\u00a0Ahsa  Al\u00a0Hofuf for More Than Three Decades."}
-              </p>
+            {/* Responsive 2-Column Grid (Owners Side-by-Side on Tablet/Desktop) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
+              
+              {/* Owner Cards Container (Side-by-side on sm/md/lg) */}
+              <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6 w-full">
+                
+                {/* 1. Amjad Imam */}
+                <div className="flex flex-col items-center text-center w-full bg-[#f8fafc] hover:bg-white rounded-3xl p-4 sm:p-5 border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+                  <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden mb-4 shadow-sm bg-slate-100">
+                    <Image 
+                      src="/images/amjad.png" 
+                      alt="Amjad Imam - SuperCool Founder" 
+                      fill 
+                      className="object-cover transition-transform duration-500 group-hover:scale-105" 
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
+                    />
+                  </div>
+                  <div className="font-extrabold text-primary text-lg sm:text-xl leading-tight group-hover:text-primary-light transition-colors">
+                    Amjad Imam
+                  </div>
+                  <div className="text-xs sm:text-sm font-bold text-accent mt-1">
+                    {language === "ar" ? "خبرة ٣٠+ عاماً" : "30+ Years Experience"}
+                  </div>
+                  <a 
+                    href="https://wa.me/966509811258"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-whatsapp inline-flex items-center gap-2 mt-3.5 px-4 py-2.5 rounded-full bg-[#25d366] hover:bg-[#1fb955] text-white transition-all duration-300 text-xs font-black shadow-md w-full justify-center"
+                  >
+                    <i className="fa-brands fa-whatsapp text-sm text-white" />
+                    <span dir="ltr">+966 50 981 1258</span>
+                  </a>
+                </div>
 
-              {/* Description */}
-              <p className="text-slate-500 font-medium text-sm md:text-base leading-relaxed mb-8">
-                {language === "ar" 
-                  ? "لأكثر من ٣٠ عاماً، تلتزم سوبر كول بتقديم خدمات تركيب وصيانة المكيفات، أنظمة التكييف المركزي، تمديد أنابيب النحاس، التنظيف والإصلاح. يعكس كل مشروع التزامنا بجودة العمل والخدمة الصادقة ورضا العملاء على المدى الطويل." 
-                  : "For over 30 years, SuperCool has been providing professional air conditioning installation, maintenance, central AC systems, copper piping, cleaning and repair services. Every project reflects our commitment to quality workmanship, honest service and long-term customer satisfaction."}
-              </p>
+                {/* 2. Asgar Imam */}
+                <div className="flex flex-col items-center text-center w-full bg-[#f8fafc] hover:bg-white rounded-3xl p-4 sm:p-5 border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+                  <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden mb-4 shadow-sm bg-slate-100">
+                    <Image 
+                      src="/images/asgar.png" 
+                      alt="Asgar Imam - SuperCool Technical Director" 
+                      fill 
+                      className="object-cover transition-transform duration-500 group-hover:scale-105" 
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
+                    />
+                  </div>
+                  <div className="font-extrabold text-primary text-lg sm:text-xl leading-tight group-hover:text-primary-light transition-colors">
+                    Asgar Imam
+                  </div>
+                  <div className="text-xs sm:text-sm font-bold text-accent mt-1">
+                    {language === "ar" ? "خبرة ٣٠+ عاماً" : "30+ Years Experience"}
+                  </div>
+                  <a 
+                    href="https://wa.me/966566706358"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-whatsapp inline-flex items-center gap-2 mt-3.5 px-4 py-2.5 rounded-full bg-[#25d366] hover:bg-[#1fb955] text-white transition-all duration-300 text-xs font-black shadow-md w-full justify-center"
+                  >
+                    <i className="fa-brands fa-whatsapp text-sm text-white" />
+                    <span dir="ltr">+966 56 670 6358</span>
+                  </a>
+                </div>
 
-              {/* Trust Statistics */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full pt-6 border-t border-slate-100 justify-items-start">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-slate-50 text-sky-500 border border-slate-100 flex items-center justify-center text-sm flex-shrink-0">
-                    <i className="fa-solid fa-check" />
+              </div>
+
+              {/* Story Column */}
+              <div className="lg:col-span-6 flex flex-col items-start text-start animate-fade-up w-full">
+                <p className="text-primary font-bold text-base sm:text-lg md:text-xl leading-relaxed mb-4">
+                  {language === "ar" 
+                    ? "نقدم حلول تكييف موثوقة في الأحساء والهفوف لأكثر من ثلاثة عقود." 
+                    : "Delivering Reliable Air Conditioning Solutions Across Al\u00a0Ahsa, Al\u00a0Hofuf for More Than Three Decades."}
+                </p>
+
+                <p className="text-slate-500 font-medium text-xs sm:text-sm md:text-base leading-relaxed mb-6">
+                  {language === "ar" 
+                    ? "لأكثر من ٣٠ عاماً، تلتزم سوبر كول بتقديم خدمات تركيب وصيانة المكيفات، أنظمة التكييف المركزي، تمديد أنابيب النحاس، التنظيف والإصلاح. يعكس كل مشروع التزامنا بجودة العمل والخدمة الصادقة ورضا العملاء على المدى الطويل." 
+                    : "For over 30 years, SuperCool has been providing professional air conditioning installation, maintenance, central AC systems, copper piping, cleaning and repair services. Every project reflects our commitment to quality workmanship, honest service and long-term customer satisfaction."}
+                </p>
+
+                {/* Trust Badges */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 w-full pt-6 border-t border-slate-100">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-blue-50 text-primary border border-blue-100 flex items-center justify-center text-xs flex-shrink-0">
+                      <i className="fa-solid fa-check" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-extrabold text-primary">
+                      {language === "ar" ? "٣٠+ عاماً من الخبرة" : "30+ Years Experience"}
+                    </span>
                   </div>
-                  <span className="text-sm font-extrabold text-primary text-start">
-                    {language === "ar" ? "٣٠+ عاماً من الخبرة" : "30+ Years Experience"}
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-slate-50 text-sky-500 border border-slate-100 flex items-center justify-center text-sm flex-shrink-0">
-                    <i className="fa-solid fa-check" />
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-blue-50 text-primary border border-blue-100 flex items-center justify-center text-xs flex-shrink-0">
+                      <i className="fa-solid fa-check" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-extrabold text-primary">
+                      {language === "ar" ? "خدمة ١٥,٠٠٠+ عميل" : "15,000+ Clients Served"}
+                    </span>
                   </div>
-                  <span className="text-sm font-extrabold text-primary text-start">
-                    {language === "ar" ? "خدمة ١٥,٠٠٠+ عميل" : "15,000+ Clients Served"}
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-slate-50 text-sky-500 border border-slate-100 flex items-center justify-center text-sm flex-shrink-0">
-                    <i className="fa-solid fa-check" />
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-blue-50 text-primary border border-blue-100 flex items-center justify-center text-xs flex-shrink-0">
+                      <i className="fa-solid fa-check" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-extrabold text-primary">
+                      {language === "ar" ? "أخصائيو تكييف محترفون" : "Professional AC Specialists"}
+                    </span>
                   </div>
-                  <span className="text-sm font-extrabold text-primary text-start">
-                    {language === "ar" ? "أخصائيو تكييف محترفون" : "Professional AC Specialists"}
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-slate-50 text-sky-500 border border-slate-100 flex items-center justify-center text-sm flex-shrink-0">
-                    <i className="fa-solid fa-check" />
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-blue-50 text-primary border border-blue-100 flex items-center justify-center text-xs flex-shrink-0">
+                      <i className="fa-solid fa-check" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-extrabold text-primary">
+                      {language === "ar" ? "تغطية شاملة في الأحساء" : "Full Al Ahsa Coverage"}
+                    </span>
                   </div>
-                  <span className="text-sm font-extrabold text-primary text-start">
-                    {language === "ar" ? "موثوقون في الأحساء، الهفوف، والقارة" : "Trusted Across Al Ahsa, Al Hofuf & Al Qarah"}
-                  </span>
                 </div>
               </div>
+
             </div>
 
           </div>
         </section>
 
         {/* Gallery Section */}
-        <section id="gallery" className="py-12 md:py-20 bg-slate-50/50 border-t border-slate-100">
-          <div className="max-w-7xl mx-auto px-3 md:px-6 text-center">
+        <section id="gallery" className="py-16 md:py-24 bg-slate-50/50 border-t border-slate-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 text-center">
             
-            <h2 className="text-3xl md:text-4xl font-extrabold text-primary">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary">
               {t.galleryTitle}
             </h2>
             <div className="flex gap-1 justify-center my-3 mb-6 md:mb-10">
@@ -1004,7 +1029,7 @@ export default function Home() {
                 <button
                   key={filter.id}
                   onClick={() => setSelectedGalleryCategory(filter.id)}
-                  className={`px-3 py-2.5 md:px-5 md:py-2.5 rounded-full text-[11px] md:text-sm font-bold transition-all duration-300 cursor-pointer text-center whitespace-normal leading-tight flex items-center justify-center min-h-[44px] md:min-h-0 ${
+                  className={`px-3 py-2.5 md:px-5 md:py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer text-center whitespace-normal leading-tight flex items-center justify-center min-h-[44px] md:min-h-0 ${
                     selectedGalleryCategory === filter.id
                       ? "bg-primary text-white shadow-md shadow-primary/15 border border-primary"
                       : "bg-white text-slate-600 hover:text-primary hover:bg-slate-50 border border-slate-200/80 shadow-sm"
@@ -1015,7 +1040,7 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Desktop View: Clean 3-column balanced grid */}
+            {/* Desktop View Grid */}
             <div className="hidden md:grid md:grid-cols-3 md:gap-6 items-start">
               {(() => {
                 const desktopGalleryImages = GALLERY_IMAGES.filter(
@@ -1040,7 +1065,6 @@ export default function Home() {
                             className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                             sizes="(max-width: 1200px) 50vw, 33vw"
                           />
-                          {/* Play button overlay */}
                           <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
                             <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white text-xl group-hover:scale-110 transition-all duration-300">
                               <i className="fa-solid fa-play" />
@@ -1060,7 +1084,6 @@ export default function Home() {
                           loading="lazy"
                         />
                       )}
-                      {/* Hover overlay search icon */}
                       <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-xl pointer-events-none">
                         <div className="w-10 h-10 rounded-full bg-white/30 backdrop-blur-md flex items-center justify-center text-white text-sm scale-75 group-hover:scale-100 transition-all duration-300">
                           <i className={`fa-solid ${item.isVideo ? "fa-play" : "fa-magnifying-glass-plus"}`} />
@@ -1072,7 +1095,7 @@ export default function Home() {
               })()}
             </div>
 
-            {/* Mobile View: Dynamic grid based on orientation pairing */}
+            {/* Mobile View Grid */}
             <div className="block md:hidden grid grid-cols-2 gap-3">
               {(() => {
                 const filtered = GALLERY_IMAGES.filter(
@@ -1127,7 +1150,6 @@ export default function Home() {
                           className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                           sizes={item.colSpan === "col-span-2" ? "100vw" : "50vw"}
                         />
-                        {/* Play button overlay */}
                         <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
                           <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white text-base group-hover:scale-110 transition-all duration-300">
                             <i className="fa-solid fa-play" />
@@ -1155,52 +1177,54 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Existing Customer Registration Section */}
+        <CustomerRegisterForm />
 
-
-        {/* Call To Action Section - Using boy.png for NEED AC SERVICE */}
-        <section id="contact" className="py-16 md:py-24 bg-slate-50/50">
-          <div className="max-w-7xl mx-auto px-6 pt-10 md:pt-16">
-            <div className="relative bg-primary rounded-3xl shadow-xl grid grid-cols-1 lg:grid-cols-12 items-stretch">
+        {/* Call To Action Section - 3D Pop-Out Mobile & Responsive Styling */}
+        <section id="contact" className="pt-20 sm:pt-28 pb-16 md:pb-24 bg-slate-50/50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+            <div className="relative bg-primary rounded-3xl shadow-2xl grid grid-cols-1 lg:grid-cols-12 items-center">
               
-              {/* Left/Right Column: Technician visual (using boy.png) based on RTL/LTR layout */}
-              <div className={`lg:col-span-5 relative min-h-[320px] lg:min-h-full ${language === "ar" ? "lg:order-last" : ""}`}>
+              {/* Technician Column with 3D Cap Pop-Out above card top edge */}
+              <div className={`lg:col-span-5 relative h-[240px] sm:h-[300px] lg:h-[400px] w-full flex items-end justify-center ${language === "ar" ? "lg:order-last" : ""}`}>
                 <img 
                   src="/images/boy.png" 
                   alt="Super Cool Friendly Technician"
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-auto h-[120%] max-w-none object-contain object-bottom z-10"
+                  className="absolute -top-12 sm:-top-16 lg:-top-20 bottom-0 left-1/2 -translate-x-1/2 h-[290px] sm:h-[370px] lg:h-[480px] w-auto max-w-none object-contain object-bottom z-20 drop-shadow-2xl"
                 />
               </div>
 
-              {/* Right/Left Column: CTA content */}
-              <div className="lg:col-span-7 p-8 md:p-12 lg:p-16 flex flex-col justify-center text-white">
-                <span className="text-sky-400 font-bold uppercase tracking-widest text-xs mb-3">
-                  {t.needAcService}
+              {/* CTA Content Column - Explicit Requested Text & Prominent Buttons */}
+              <div className="lg:col-span-7 p-6 sm:p-8 md:p-12 lg:p-14 flex flex-col justify-center text-white z-20">
+                <span className="text-sky-400 font-bold uppercase tracking-widest text-xs sm:text-sm mb-2 sm:mb-3">
+                  {language === "ar" ? "اتصل بنا" : "CONTACT"}
                 </span>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold font-plus-jakarta leading-tight mb-4">
-                  {t.callAway}
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold font-plus-jakarta leading-tight mb-3 sm:mb-4 text-white">
+                  {language === "ar" ? "اتصل بنا في أي وقت!" : "Call Us Anytime!"}
                 </h2>
-                <p className="text-slate-300 text-sm md:text-base leading-relaxed max-w-lg mb-8">
-                  {t.ctaDesc}
+                <p className="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed max-w-lg mb-6 sm:mb-8 font-medium">
+                  {language === "ar" ? "هل تحتاج إلى تركيب أو تنظيف أو إصلاح المكيف؟ اتصل بفريقنا للحصول على خدمة سريعة." : "Need AC install, cleaning, or repair? Call our team for fast service."}
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center">
+                {/* Original High Contrast Action Buttons */}
+                <div className="flex flex-col sm:flex-row gap-3.5 items-stretch sm:items-center">
                   <button 
                     onClick={() => setShowCallModal(true)}
-                    className="flex items-center justify-center gap-3 px-7 py-4 bg-white text-primary font-extrabold rounded-full hover:bg-slate-50 hover:-translate-y-0.5 transition-all duration-300 shadow-xl shadow-black/10 cursor-pointer"
+                    className="flex items-center justify-center gap-3 px-6 py-3.5 sm:py-4 bg-white hover:bg-slate-50 text-primary font-extrabold rounded-full transition-all duration-300 shadow-xl shadow-black/10 cursor-pointer text-xs sm:text-sm active:scale-[0.98]"
                   >
-                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <i className="fa-solid fa-phone text-primary text-sm" />
+                    <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <i className="fa-solid fa-phone text-primary text-xs sm:text-sm" />
                     </div>
-                    <span>{t.callSupportLines}</span>
+                    <span className="truncate">{t.callSupportLines}</span>
                   </button>
                   <a 
                     href={whatsappLink}
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="btn-whatsapp flex items-center justify-center gap-2.5 px-7 py-4 bg-[#25d366] hover:bg-[#1fb955] text-white font-extrabold rounded-full transition-all duration-300 shadow-xl shadow-black/10 hover:-translate-y-0.5"
+                    className="btn-whatsapp flex items-center justify-center gap-2.5 px-6 py-3.5 sm:py-4 bg-[#25d366] hover:bg-[#1fb955] text-white font-extrabold rounded-full transition-all duration-300 shadow-xl shadow-black/10 text-xs sm:text-sm active:scale-[0.98]"
                   >
-                    <i className="fa-brands fa-whatsapp text-white text-xl" />
-                    <span>{t.whatsAppUs}</span>
+                    <i className="fa-brands fa-whatsapp text-white text-lg sm:text-xl flex-shrink-0" />
+                    <span className="truncate">{t.whatsAppUs}</span>
                   </a>
                 </div>
               </div>
@@ -1211,8 +1235,8 @@ export default function Home() {
 
         {/* Service Area Map Section */}
         <section className="py-10 bg-slate-50/30 border-t border-slate-100">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="w-full h-[320px] md:h-[420px] rounded-3xl overflow-hidden shadow-lg border border-slate-100 relative">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+            <div className="w-full h-[280px] sm:h-[350px] md:h-[420px] rounded-3xl overflow-hidden shadow-lg border border-slate-100 relative">
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115162.2471644783!2d49.529815049511115!3d25.377317772714073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e37f7a1f5dc0f89%3A0xf63989c6807eb326!2sAl%20Hofuf%20Saudi%20Arabia!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
                 width="100%"
@@ -1232,17 +1256,15 @@ export default function Home() {
 
       {/* Footer Info Bar */}
       <footer className="bg-gradient-to-r from-primary-dark via-primary to-primary-dark text-white border-t border-white/10 py-8">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Logo element on the left */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center">
-            <div className="relative w-80 h-40">
-              <Image src="/images/l2.png" alt="Super Cool Logo symbol" fill className="object-contain brightness-0 invert" sizes="320px" />
+            <div className="relative w-64 sm:w-80 h-24 sm:h-32">
+              <Image src="/images/l2.png" alt="Super Cool Logo symbol" fill className="object-contain brightness-0 invert" sizes="(max-width: 640px) 256px, 320px" />
             </div>
           </div>
 
-          {/* Core Info Row */}
-          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 text-sm text-white/80 font-medium">
-            <div className="flex items-center gap-2 text-xs sm:text-sm whitespace-nowrap">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-xs sm:text-sm text-white/80 font-semibold text-center">
+            <div className="flex items-center gap-2 whitespace-nowrap">
               <i className="fa-solid fa-location-dot text-white/60" />
               <span>{t.location}</span>
             </div>
@@ -1255,8 +1277,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Copyright text */}
-          <span className="text-xs text-white/50">
+          <span className="text-xs text-white/50 text-center">
             &copy; {new Date().getFullYear()} {t.copyright}
           </span>
         </div>
@@ -1264,28 +1285,43 @@ export default function Home() {
 
       {/* Call Lines Modal Dialog */}
       {showCallModal && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-3xl p-8 max-w-sm w-full text-center shadow-2xl border border-slate-100 flex flex-col items-center animate-pulse-slow">
-            <div className="w-16 h-16 bg-primary/5 text-primary rounded-full flex items-center justify-center text-2xl mb-4">
+        <div 
+          onClick={() => setShowCallModal(false)}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 animate-fade-in"
+        >
+          <div 
+            onClick={(e) => e.stopPropagation()}
+            className="relative bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full text-center shadow-2xl border border-slate-100 flex flex-col items-center animate-scale-up"
+          >
+            {/* Top-Right Close Button */}
+            <button
+              onClick={() => setShowCallModal(false)}
+              className="absolute top-4 end-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors cursor-pointer"
+              aria-label="Close dialog"
+            >
+              <i className="fa-solid fa-xmark text-base" />
+            </button>
+
+            <div className="w-14 h-14 bg-primary/5 text-primary rounded-full flex items-center justify-center text-xl mb-3 mt-1">
               <i className="fa-solid fa-phone-volume" />
             </div>
-            <h3 className="font-plus-jakarta font-extrabold text-xl text-primary mb-2">
+            <h3 className="font-plus-jakarta font-extrabold text-xl text-primary mb-1.5">
               {t.modalTitle}
             </h3>
-            <p className="text-sm text-slate-500 mb-6 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-500 mb-6 leading-relaxed">
               {t.modalDesc}
             </p>
             <div className="flex flex-col gap-3 w-full">
               <a 
                 href="tel:0566706358"
-                className="flex items-center justify-center gap-3 py-3.5 bg-primary hover:bg-primary-light text-white font-bold rounded-xl shadow-md transition-all duration-200"
+                className="flex items-center justify-center gap-3 py-3.5 bg-primary hover:bg-primary-light text-white font-bold rounded-xl shadow-md transition-all duration-200 text-sm"
               >
                 <i className="fa-solid fa-phone" />
                 <span dir="ltr">056 670 6358</span>
               </a>
               <a 
                 href="tel:0509811258"
-                className="flex items-center justify-center gap-3 py-3.5 bg-slate-100 hover:bg-slate-200 text-primary font-bold rounded-xl transition-all duration-200"
+                className="flex items-center justify-center gap-3 py-3.5 bg-slate-100 hover:bg-slate-200 text-primary font-bold rounded-xl transition-all duration-200 text-sm"
               >
                 <i className="fa-solid fa-phone" />
                 <span dir="ltr">050 981 1258</span>
@@ -1293,22 +1329,24 @@ export default function Home() {
             </div>
             <button 
               onClick={() => setShowCallModal(false)}
-              className="mt-6 text-sm font-semibold text-slate-400 hover:text-slate-600 transition-colors cursor-pointer"
+              className="w-full mt-4 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-extrabold rounded-xl transition-colors cursor-pointer text-xs sm:text-sm flex items-center justify-center gap-2"
             >
-              {t.cancel}
+              <i className="fa-solid fa-xmark text-sm" />
+              <span>{language === "ar" ? "إغلاق النافذة" : "Close Window"}</span>
             </button>
           </div>
         </div>
       )}
+
       {/* Back to Top Button */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className={`fixed bottom-6 end-6 z-40 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-xl border border-white/10 hover:bg-accent hover:scale-110 active:scale-95 transition-all duration-300 transform cursor-pointer ${
+        className={`fixed bottom-6 end-6 z-40 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-xl border border-white/10 hover:bg-accent hover:scale-110 active:scale-95 transition-all duration-300 transform cursor-pointer ${
           scrolled ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-75 pointer-events-none"
         }`}
         aria-label="Scroll to top of the page"
       >
-        <i className="fa-solid fa-chevron-up text-sm" />
+        <i className="fa-solid fa-chevron-up text-xs sm:text-sm" />
       </button>
 
       <Lightbox

@@ -106,12 +106,12 @@ export default function ContactClient() {
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-sky-400/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="max-w-4xl mx-auto relative z-10">
           <h1 className="text-[28px] sm:text-4xl md:text-5xl font-black font-plus-jakarta leading-tight mb-4">
-            {isAr ? "تواصل مع سوبر كول في الأحساء والهفوف" : "Contact Super Cool AC Services — Al\u00a0Ahsa  Al\u00a0Hofuf"}
+            {isAr ? "تواصل مع سوبر كول في الأحساء والهفوف" : "Contact Super Cool AC Services — Al\u00a0Ahsa, Al\u00a0Hofuf"}
           </h1>
           <p className="text-slate-200 text-base md:text-lg max-w-2xl mx-auto">
             {isAr
               ? "فريقنا جاهز للإجابة على استفساراتك وتقديم خدمة سريعة في الأحساء والهفوف."
-              : "Our team is ready to answer your questions and provide fast AC service across Al\u00a0Ahsa  Al\u00a0Hofuf."}
+              : "Our team is ready to answer your questions and provide fast AC service across Al\u00a0Ahsa, Al\u00a0Hofuf."}
           </p>
         </div>
       </section>
@@ -186,7 +186,7 @@ export default function ContactClient() {
           <p className="text-slate-200 text-sm mb-6">
             {isAr
               ? "تواصل معنا عبر الواتساب لحصص معاينة وعرض سعر مجاني في الأحساء والهفوف."
-              : "Chat with us on WhatsApp for a free consultation and fast service in Al\u00a0Ahsa  Al\u00a0Hofuf."}
+              : "Chat with us on WhatsApp for a free consultation and fast service in Al\u00a0Ahsa, Al\u00a0Hofuf."}
           </p>
           <a href={whatsappLink} target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2.5 px-8 py-4 bg-whatsapp hover:bg-emerald-600 text-white font-extrabold rounded-full transition-all duration-300 shadow-md">

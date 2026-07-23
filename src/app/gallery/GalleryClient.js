@@ -8,6 +8,118 @@ import Lightbox from "@/components/Lightbox";
 
 const GALLERY_IMAGES = [
   {
+    src: "/c1.png",
+    category: "vehicles",
+    altEn: "Super Cool AC service vehicle Saudi Arabia",
+    altAr: "سيارات الخدمة سوبر كول في السعودية",
+    width: 1672,
+    height: 941
+  },
+  {
+    src: "/c2.png",
+    category: "vehicles",
+    altEn: "Super Cool AC service vehicle Saudi Arabia",
+    altAr: "سيارات الخدمة سوبر كول في السعودية",
+    width: 941,
+    height: 1672
+  },
+  {
+    src: "/c3.png",
+    category: "vehicles",
+    altEn: "Super Cool AC service vehicle Saudi Arabia",
+    altAr: "سيارات الخدمة سوبر كول في السعودية",
+    width: 1536,
+    height: 1024
+  },
+  {
+    src: "/supercool-ac-service-vehicle-al-ahsa.webp",
+    category: "vehicles",
+    altEn: "Super Cool AC service vehicle in Al Ahsa Saudi Arabia",
+    altAr: "سيارة خدمة مكيفات سوبر كول في الأحساء",
+    width: 1672,
+    height: 941
+  },
+  {
+    src: "/w1.png",
+    category: "installation",
+    altEn: "Super Cool AC installation project Al Ahsa",
+    altAr: "مشروع تركيب مكيفات سوبر كول في الأحساء",
+    width: 1080,
+    height: 1440
+  },
+  {
+    src: "/w2.png",
+    category: "installation",
+    altEn: "Professional split AC mounting Al Hofuf",
+    altAr: "تركيب مكيفات سبلت احترافي في الهفوف",
+    width: 1080,
+    height: 1440
+  },
+  {
+    src: "/w4.png",
+    category: "installation",
+    altEn: "AC unit installation & outdoor mounting Al Ahsa",
+    altAr: "تركيب وتثبيت مكيفات خارجية في الأحساء",
+    width: 1080,
+    height: 1440
+  },
+  {
+    src: "/w5.png",
+    category: "installation",
+    altEn: "Completed AC installation work Super Cool",
+    altAr: "أعمال تركيب مكيفات مكتملة من سوبر كول",
+    width: 1080,
+    height: 1440
+  },
+  {
+    src: "/w6.png",
+    category: "installation",
+    altEn: "AC unit installation & indoor mounting Al Ahsa",
+    altAr: "تركيب مكيفات دقيقة داخلية في الأحساء",
+    width: 1080,
+    height: 1440
+  },
+  {
+    src: "/w7.png",
+    category: "installation",
+    altEn: "Professional AC installation project Super Cool",
+    altAr: "مشروع تركيب مكيفات متكامل في الأحساء",
+    width: 1080,
+    height: 1440
+  },
+  {
+    src: "/w10.png",
+    category: "installation",
+    altEn: "Super Cool AC installation project Al Ahsa",
+    altAr: "مشروع تركيب مكيفات سوبر كول في الأحساء",
+    width: 1080,
+    height: 1440
+  },
+  {
+    src: "/w11.png",
+    category: "installation",
+    altEn: "Professional split AC mounting Al Hofuf",
+    altAr: "تركيب مكيفات سبلت احترافي في الهفوف",
+    width: 1080,
+    height: 1440
+  },
+  {
+    src: "/w12.png",
+    category: "installation",
+    altEn: "AC unit installation & outdoor mounting Al Ahsa",
+    altAr: "تركيب وتثبيت مكيفات خارجية في الأحساء",
+    width: 1080,
+    height: 1440
+  },
+  {
+    src: "/w13.png",
+    category: "installation",
+    altEn: "Completed AC installation work Super Cool",
+    altAr: "أعمال تركيب مكيفات مكتملة من سوبر كول",
+    width: 1080,
+    height: 1440
+  },
+  {
     src: "/ac-installation-work-hofuf.webp",
     category: "installation",
     altEn: "Professional AC installation work Al Ahsa by Super Cool technicians",
@@ -39,30 +151,6 @@ const GALLERY_IMAGES = [
     altAr: "فيديو أعمال تركيب مكيفات سوبر كول في الأحساء",
     width: 478,
     height: 850
-  },
-  {
-    src: "/supercool-ac-service-vehicle-al-ahsa.webp",
-    category: "vehicles",
-    altEn: "Super Cool AC service vehicle in Al Ahsa Saudi Arabia",
-    altAr: "سيارة خدمة مكيفات سوبر كول في الأحساء",
-    width: 1672,
-    height: 941
-  },
-  {
-    src: "/c2.png",
-    category: "vehicles",
-    altEn: "Super Cool AC service vehicle Saudi Arabia",
-    altAr: "سيارات الخدمة سوبر كول في السعودية",
-    width: 941,
-    height: 1672
-  },
-  {
-    src: "/c3.png",
-    category: "vehicles",
-    altEn: "Super Cool AC service vehicle Saudi Arabia",
-    altAr: "سيارات الخدمة سوبر كول في السعودية",
-    width: 1536,
-    height: 1024
   }
 ];
 
@@ -112,7 +200,7 @@ export default function GalleryClient() {
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-sky-400/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="max-w-4xl mx-auto relative z-10">
           <h1 className="text-[28px] sm:text-4xl md:text-5xl font-black font-plus-jakarta leading-tight mb-4">
-            {language === "ar" ? "معرض أعمال تكييف سوبر كول في الأحساء والهفوف" : "AC Service Work Gallery — Al\u00a0Ahsa  Al\u00a0Hofuf"}
+            {language === "ar" ? "معرض أعمال تكييف سوبر كول في الأحساء والهفوف" : "AC Service Work Gallery — Al\u00a0Ahsa, Al\u00a0Hofuf"}
           </h1>
           <p className="text-slate-200 text-base md:text-lg max-w-2xl mx-auto">
             {language === "ar"

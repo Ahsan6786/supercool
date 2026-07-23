@@ -9,85 +9,114 @@ export const content = {
     navHome: "Home",
     navAbout: "About Us",
     navServices: "Services",
-    navContact: "Contact Us",
+    navContact: "Contact",
     callSupport: "Call Support",
     callSupportLines: "Call Support Lines",
-    whatsappSupport: "WhatsApp",
-    servingBadge: "Serving Al Ahsa for 30+ Years",
-    badgeTop: "Serving Al\u00a0Ahsa  Al\u00a0Hofuf",
-    badgeBottom: "30+ Years Experience",
-    heroTitle1: "Quality AC Services,",
-    heroTitle2: "Every Season.",
-    heroDesc: "Quality AC installation, repair, and cleaning for homes and businesses.",
-    heroDescNew: "Quality AC Installation, Repair, Cleaning & Copper Piping.",
-    trust1: "30+ Years",
-    trust2: "Fast Service",
-    trust3: "Home & Business",
-    trust4: "Al\u00a0Ahsa  Al\u00a0Hofuf",
-    est1989: "EST. 1989",
-    yearsOfTrust: "30+ YEARS OF SERVICE",
-    cooling: "Cooling",
-    yourWorld: "Your World.",
-    proAcServices: "Quality AC Services",
-    youCan: "You Can",
-    relyOn: "Rely On.",
-    acBullet1: "AC Repair, Cleaning, Piping",
-    acBullet2: "and Installation.",
-    pillInstall: "Installation",
-    pillMaint: "Maintenance",
-    pillClean: "Cleaning",
-    pillPiping: "Piping",
-    pillCentral: "Central AC",
-    callNow: "Call Now 056 / 050",
+    whatsappSupport: "WhatsApp Support",
+
+    // Hero Section
+    yearsOfTrust: "30+ Years of Quality Work",
+    acBullet1: "• AC Installation, Repair, Wash & Maintenance",
+    acBullet2: "• Certified Specialists in Al Ahsa & Al Hofuf",
     whatsAppUs: "WhatsApp Us",
-    ourServices: "SERVICES",
-    completeAcSolutions: "Our AC Services",
-    subtext: "Fast and Reliable.",
-    installTitle: "AC Installation",
-    installDesc: "We install all types of AC units quickly and correctly.",
-    repairTitle: "AC Repair",
-    repairDesc: "Quick repair for all brands of ACs.",
-    cleaningTitle: "AC Cleaning",
-    cleaningDesc: "Deep wash for clean air and better cooling.",
-    maintenanceTitle: "AC Maintenance",
-    maintenanceDesc: "Regular checkups to save power and avoid leaks.",
-    pipingTitle: "AC Piping",
-    pipingDesc: "Quality copper pipes and leak fixes.",
-    homeServiceTitle: "Home Service",
-    homeServiceDesc: "AC repair at your home anytime.",
+
+    // Services Section
+    completeAcSolutions: "Complete AC Solutions in Al Ahsa, Al Hofuf",
+    subtext: "Over 30 years of experience delivering reliable, fast air conditioning services for homes and businesses.",
+    installTitle: "AC Installation & Mounting",
+    installDesc: "Expert installation for Split, Package, and Central AC units with optimal placement.",
+    repairTitle: "Fast AC Repair & Diagnostics",
+    repairDesc: "Quick troubleshooting for gas leaks, compressor issues, cooling loss, and electrical faults.",
+    cleaningTitle: "Deep AC Cleaning & Wash",
+    cleaningDesc: "High-pressure jet washing for indoor/outdoor coils, filters, and drain lines for max cooling.",
+    maintenanceTitle: "Preventative Maintenance",
+    maintenanceDesc: "Comprehensive seasonal inspection, gas top-ups, and tune-ups to extend AC life.",
+    pipingTitle: "Copper Piping Installation",
+    pipingDesc: "High-grade copper tube piping with thermal insulation and leak-proof testing.",
+    homeServiceTitle: "On-Demand Home Service",
+    homeServiceDesc: "Equipped mobile service fleet arriving quickly at your home or workplace.",
+
+    // Stats
     statExpVal: "30+",
     statExpLabel: "Years Experience",
-    statCustVal: "15000+",
-    statCustLabel: "Customers Served",
-    statServingVal: "Al\u00a0Ahsa  Al\u00a0Hofuf",
-    statServingLabel: "Proudly Serving",
+    statCustVal: "10,000+",
+    statCustLabel: "Happy Customers",
+    statServingVal: "Al Ahsa, Al Hofuf",
+    statServingLabel: "Coverage Area",
     statEmergencyVal: "24/7",
-    statEmergencyLabel: "Emergency Service",
-    whyChooseUs: "ABOUT US",
-    comfortPriority: "Why Choose Us",
-    valTechTitle: "Expert Team",
-    valTechDesc: "Trained workers with modern tools.",
-    valRespTitle: "Fast Service",
-    valRespDesc: "Quick service in Al\u00a0Ahsa  Al\u00a0Hofuf.",
-    valQualTitle: "Best Quality",
-    valQualDesc: "High quality work and happy customers.",
-    valPriceTitle: "Good Prices",
-    valPriceDesc: "Fair prices with no hidden fees.",
-    needAcService: "CONTACT",
-    callAway: "Call Us Anytime!",
-    ctaDesc: "Need AC install, cleaning, or repair? Call our team for fast service.",
-    location: "Al Ahsa, Hofuf, Saudi Arabia",
-    openHours: "Open 24/7",
-    copyright: "SuperCool. All rights reserved.",
-    modalTitle: "Call SuperCool",
-    modalDesc: "Click a number to call our AC service team:",
-    cancel: "Cancel",
-    galleryTitle: "Our Work",
-    gallerySubtitle: "GALLERY",
+    statEmergencyLabel: "Emergency Callout",
+
+    // Values / Features
+    valCustTitle: "Customer Satisfaction First",
+    valCustDesc: "We prioritize long-term customer trust with transparent communication and quality guarantee.",
+    valTechTitle: "Expert Technicians",
+    valTechDesc: "Fully trained & certified specialists diagnosing and fixing issues with accuracy.",
+    valRespTitle: "Fast Response",
+    valRespDesc: "Quick turnaround for emergency service calls in Al Ahsa, Al Hofuf, Al Qarah.",
+    valQualTitle: "Best Quality Work",
+    valQualDesc: "100% satisfaction guarantee on all service calls and replacement parts.",
+    valPriceTitle: "Fair & Honest Prices",
+    valPriceDesc: "Upfront pricing with no hidden charges or unexpected fees.",
+
+    // Contact Section
+    contactTitle: "Get In Touch",
+    contactSubtitle: "Our team is ready 24/7 to solve all your cooling and air conditioning needs.",
+    callUsDirect: "Call Us Directly",
+    callUsDirectSub: "Immediate support without waiting queues",
+    whatsappUsSub: "Direct chat for booking & quotes",
+    locationTitle: "Service Coverage Area",
+    locationDesc: "Serving all districts across Al Ahsa, Al Hofuf, Al Qarah, and surrounding areas.",
+    copyright: "All Rights Reserved © SuperCool - RAHMA Establishment.",
+
+    // Gallery
+    galleryTitle: "Service Gallery",
+    gallerySubtitle: "SERVICE GALLERY",
     filterAll: "All",
     filterInstallation: "AC Installation",
     filterPipes: "Copper Pipes",
-    filterVehicles: "Our Vehicles"
+    filterVehicles: "Our Vehicles",
+
+    // Form Exact Reference Match Strings
+    formHeaderTitle: "Book a Service",
+    formHeaderSubtitle: "Fill in your details and we'll contact you shortly.",
+    fullNameLabel: "Full Name",
+    fullNamePlaceholder: "e.g. Abdullah Al-Mansoor",
+    mobileLabel: "Mobile / WhatsApp Number",
+    mobilePlaceholder: "e.g. 056 670 6358",
+    emailLabel: "Email Address",
+    emailPlaceholder: "name@example.com",
+    serviceRequiredLabel: "Service Required",
+    serviceOptionSelect: "-- Select Required Service --",
+    serviceInstall: "AC Installation",
+    serviceRepair: "AC Repair",
+    serviceCleaning: "AC Cleaning & Wash",
+    serviceMaintenance: "AC Maintenance",
+    servicePiping: "Copper Piping",
+    bookServiceBtn: "Book Service",
+    submitting: "Submitting...",
+    heroConsentLabel: "I agree to receive WhatsApp & Email service updates and offers.",
+    securityText: "Your information is safe and secure.",
+    heroSuccessMessage: "Thank you! Your request has been received. We will contact you shortly.",
+    whatsappQuickConnect: "Send Details via WhatsApp",
+    submitAnother: "Book Another Service",
+
+    // Existing Customer Form
+    existingCustomerTitle: "Already Our Customer?",
+    existingCustomerSubtitle: "Register for warranty, service reminders and exclusive offers.",
+    nameOptionalLabel: "Full Name (Optional)",
+    nameOptionalPlaceholder: "e.g. Abdullah Al-Mansoor",
+    registerBtn: "Register",
+    customerConsentLabel: "I agree to receive WhatsApp & Email reminders and offers.",
+    registerSuccessMessage: "Thank you! Your registration is complete. You will now receive warranty and service updates via WhatsApp and Email.",
+    registerAnother: "Register Another Number",
+
+    // Errors
+    errNameRequired: "Please enter your full name",
+    errMobileRequired: "Please enter a valid mobile number (e.g., 056XXXXXXX)",
+    errEmailRequired: "Please enter a valid email address (e.g. name@example.com)",
+    errServiceRequired: "Please select a service type",
+    errConsentRequired: "You must agree to proceed",
+    errDuplicate: "You have already submitted a request recently. Our team is contacting you shortly!"
   },
   ar: {
     navHome: "الرئيسية",
@@ -96,59 +125,43 @@ export const content = {
     navContact: "اتصل بنا",
     callSupport: "اتصل بالدعم",
     callSupportLines: "أرقام الاتصال بالدعم",
-    whatsappSupport: "راسلنا عبر الواتساب",
-    servingBadge: "نخدم الأحساء، الهفوف، والقارة منذ 30+ عاماً",
-    badgeTop: "نخدم الأحساء، الهفوف، والقارة",
-    badgeBottom: "٣٠+ عاماً من الخبرة الموثوقة",
-    heroTitle1: "تبريد عالمك،",
-    heroTitle2: "في كل الفصول.",
-    heroDesc: "خدمات احترافية لتركيب وصيانة وإصلاح التكييف للمنازل والمكاتب والمنشآت التجارية.",
-    heroDescNew: "تركيب وصيانة وتنظيف المكيفات، أنظمة التكييف المركزي، وتمديد أنابيب النحاس للمنازل والمشاريع التجارية.",
-    trust1: "٣٠+ عاماً",
-    trust2: "استجابة سريعة",
-    trust3: "سكني وتجاري",
-    trust4: "الأحساء، الهفوف، والقارة",
-    est1989: "تأسس عام ١٩٨٩",
-    yearsOfTrust: "٣٠+ عاماً من الثقة",
-    cooling: "تبريد",
-    yourWorld: "عالمك.",
-    proAcServices: "خدمات تكييف احترافية",
-    youCan: "يمكنك",
-    relyOn: "الاعتماد عليها.",
-    acBullet1: "صيانة، غسيل، وتمديد أنابيب",
-    acBullet2: "خدمات التكييف المتكاملة وأكثر.",
-    pillInstall: "تركيب المكيفات",
-    pillMaint: "صيانة المكيفات",
-    pillClean: "تنظيف المكيفات",
-    pillPiping: "تمديد أنابيب النحاس",
-    pillCentral: "تكييف مركزي",
-    callNow: "اتصل الآن 056 / 050",
-    whatsAppUs: "راسلنا عبر الواتساب",
-    ourServices: "خدماتنا",
-    completeAcSolutions: "حلول تكييف متكاملة",
-    subtext: "خدمة موثوقة • استجابة سريعة • أسعار منافسة",
-    installTitle: "تركيب المكيفات",
-    installDesc: "تركيب احترافي لجميع أنواع المكيفات لضمان أفضل أداء منذ اليوم الأول.",
-    repairTitle: "إصلاح المكيفات",
-    repairDesc: "صيانة وإصلاح أعطال المكيفات لجميع الماركات بقطع غيار أصلية.",
-    cleaningTitle: "تنظيف المكيفات",
-    cleaningDesc: "تنظيف عميق بأحدث المضخات لضمان هواء نقي خالي من الأتربة وقوة دفع مثالية.",
-    maintenanceTitle: "صيانة المكيفات",
-    maintenanceDesc: "فحص وصيانة دورية لإطالة عمر الجهاز وتفادي الأعطال المفاجئة وتوفير الكهرباء.",
+    whatsappSupport: "دعم الواتساب",
+
+    // Hero Section
+    yearsOfTrust: "خبرة وجودة لأكثر من ٣٠+ عاماً",
+    acBullet1: "• تركيب، صيانة، إصلاح، وتغسيل المكيفات",
+    acBullet2: "• فنيون معتمدون في الأحساء والهفوف",
+    whatsAppUs: "تواصل عبر الواتساب",
+
+    // Services Section
+    completeAcSolutions: "خدمات تكييف متكاملة في الأحساء والهفوف",
+    subtext: "خبرة تفوق ٣٠ عاماً في تقديم حلول التكييف الموثوقة والسريعة للأسر والشركات.",
+    installTitle: "تركيب وتثبيت المكيفات",
+    installDesc: "تركيب متقن لمكيفات السبلت، المركبي، والمركزية بأعلى مستويات الدقة.",
+    repairTitle: "إصلاح وعلاج أعطال المكيفات",
+    repairDesc: "تشخيص ومعالجة تسريب الفريون، مشاكل الضاغط (الكمبروسر)، وضعف التبريد.",
+    cleaningTitle: "تنظيف وغسيل عميق",
+    cleaningDesc: "غسيل عالي الضغط للمبخر والمكثف والفلاتر لإعادة التبريد لأقصى كفاءة.",
+    maintenanceTitle: "صيانة وقائية دورية",
+    maintenanceDesc: "فحص شامل وتفقد غاز التبريد لتفادي الأعطال المفاجئة وتمديد عمر المكيف.",
     pipingTitle: "تمديد أنابيب النحاس",
-    pipingDesc: "تركيب احترافي وتغليف لأنابيب النحاس وإصلاح التسريبات لمكيفات الاسبليت والمركزية.",
-    homeServiceTitle: "خدمات منزلية",
-    homeServiceDesc: "تشخيص في الموقع، فحص التبريد، وإصلاح المكيفات المنزلية عند باب بيتك.",
-    statExpVal: "30+",
+    pipingDesc: "تمديد أنابيب نحاس عالية الجودة مع العزل الحراري وااختبارات التسريب.",
+    homeServiceTitle: "خدمة منازل سريعة",
+    homeServiceDesc: "أسطول صيانة جوال مجهز بالكامل للوصول الفوري لمنزلك أو منشأتك.",
+
+    // Stats
+    statExpVal: "٣٠+",
     statExpLabel: "عاماً من الخبرة",
-    statCustVal: "15000+",
+    statCustVal: "١٠,000+",
     statCustLabel: "عميل سعيد",
-    statServingVal: "الأحساء، الهفوف، والقارة",
-    statServingLabel: "فخورون بخدمتكم",
-    statEmergencyVal: "24/7",
-    statEmergencyLabel: "طوارئ على مدار الساعة",
-    whyChooseUs: "لماذا تختار سوبر كول؟",
-    comfortPriority: "راحتكم هي أولويتنا",
+    statServingVal: "الأحساء والهفوف",
+    statServingLabel: "تغطية شاملة",
+    statEmergencyVal: "٢٤/٧",
+    statEmergencyLabel: "خدمة طوارئ",
+
+    // Values / Features
+    valCustTitle: "رضا العملاء أولويتنا",
+    valCustDesc: "نضع ثقة العملاء في المقدمة من خلال الشفافية والجودة العالية.",
     valTechTitle: "كادر فني متخصص",
     valTechDesc: "فنيون مؤهلون ومعتمدون لتشخيص وإصلاح كافة المشاكل بدقة.",
     valRespTitle: "استجابة سريعة",
@@ -157,126 +170,112 @@ export const content = {
     valQualDesc: "ضمان الرضا بنسبة 100% على جميع أعمال الصيانة.",
     valPriceTitle: "أسعار مناسبة",
     valPriceDesc: "أسعار صادقة وتنافسية وعروض أسعار واضحة ومسبقة.",
-    needAcService: "هل تحتاج خدمة تكييف؟",
-    callAway: "نحن على بعد اتصال واحد!",
-    ctaDesc: "من خدمات إصلاح التسريبات الطارئة والصيانة الدورية إلى تركيب مكيفات اسبليت الجديدة، فريقنا جاهز لتقديم خدمات سريعة ونتائج ممتازة.",
-    location: "الأحساء، الهفوف، ، القارة، المملكة العربية السعودية",
-    openHours: "مفتوح على مدار الساعة 24/7",
-    copyright: "سوبر كول. جميع الحقوق محفوظة.",
-    modalTitle: "اتصل بمؤسسة رحمة",
-    modalDesc: "اختر أحد خطوطنا للتواصل مع فريق خدمات التكييف:",
-    cancel: "إلغاء",
-    galleryTitle: "معرض أعمالنا المتميزة",
-    gallerySubtitle: "معرض الصور",
+
+    // Contact Section
+    contactTitle: "تواصل معنا",
+    contactSubtitle: "فريقنا المعتمد على أتم الاستعداد لمساعدتك ٢٤/٧.",
+    callUsDirect: "اتصال مباشر",
+    callUsDirectSub: "خدمة فورية وبدون تكرار قائمة انتظار",
+    whatsappUsSub: "استجابة مباشرة وحجز مواعيد",
+    locationTitle: "مناطق التغطية والخدمة",
+    locationDesc: "نغطي كافة أحياء الأحساء، الهفوف، والمناطق المجاورة.",
+    copyright: "جميع الحقوق محفوظة © سوبر كول - مؤسسة رحمة.",
+
+    // Gallery
+    galleryTitle: "معرض الخدمات",
+    gallerySubtitle: "معرض الخدمات",
     filterAll: "الكل",
     filterInstallation: "أعمال تركيب المكيفات",
     filterPipes: "أنابيب النحاس الفاخرة",
-    filterVehicles: "سيارات الخدمة"
+    filterVehicles: "سيارات الخدمة",
+
+    // Form Exact Reference Match Strings
+    formHeaderTitle: "حجز خدمة تكييف",
+    formHeaderSubtitle: "أدخل بياناتك وسنتواصل معك في أقرب وقت.",
+    fullNameLabel: "الاسم الكامل",
+    fullNamePlaceholder: "مثال: عبد الله المنصور",
+    mobileLabel: "رقم الجوال / الواتساب",
+    mobilePlaceholder: "مثال: 056 670 6358",
+    emailLabel: "البريد الإلكتروني",
+    emailPlaceholder: "name@example.com",
+    serviceRequiredLabel: "الخدمة المطلوبة",
+    serviceOptionSelect: "-- اختر الخدمة المطلوبة --",
+    serviceInstall: "تركيب مكيفات",
+    serviceRepair: "إصلاح وعلاج الأعطال",
+    serviceCleaning: "تنظيف وغسيل عميق",
+    serviceMaintenance: "صيانة وتفقد التبريد",
+    servicePiping: "تمديد أنابيب النحاس",
+    bookServiceBtn: "حجز الخدمة",
+    submitting: "جاري الإرسال...",
+    heroConsentLabel: "أوافق على تلقي تحديثات الخدمة والعروض عبر الواتساب والبريد الإلكتروني.",
+    securityText: "معلوماتك آمنة ومحمية تماماً.",
+    heroSuccessMessage: "شكراً لك! تم استلام طلبك بنجاح. وسنتواصل معك في أقرب وقت.",
+    whatsappQuickConnect: "إرسال التفاصيل عبر الواتساب",
+    submitAnother: "حجز خدمة أخرى",
+
+    // Existing Customer Form
+    existingCustomerTitle: "هل أنت عميل سابق؟",
+    existingCustomerSubtitle: "سجل للحصول على الضمان وتذكيرات الصيانة والعروض الحصرية.",
+    nameOptionalLabel: "الاسم الكامل (اختياري)",
+    nameOptionalPlaceholder: "مثال: عبد الله المنصور",
+    registerBtn: "تسجيل",
+    customerConsentLabel: "أوافق على تلقي تذكيرات الصيانة والعروض عبر الواتساب والبريد الإلكتروني.",
+    registerSuccessMessage: "شكراً لك! تم تسجيل حسابك بنجاح. ستصلك تحديثات الصيانة والضمان عبر الواتساب والبريد الإلكتروني.",
+    registerAnother: "تسجيل رقم آخر",
+
+    // Errors
+    errNameRequired: "يرجى إدخال الاسم الكامل",
+    errMobileRequired: "يرجى إدخال رقم جوال صحيح (مثال: 05xxxxxxxx)",
+    errEmailRequired: "يرجى إدخال بريد إلكتروني صحيح (مثال: name@example.com)",
+    errServiceRequired: "يرجى اختيار نوع الخدمة",
+    errConsentRequired: "يجب الموافقة للمتابعة",
+    errDuplicate: "لقد قدمت طلب فحص مؤخراً برقم الجوال هذا. فريقنا يتواصل معك حالياً!"
   }
 };
 
 export function LanguageProvider({ children }) {
-  const [language, setLanguage] = useState("en");
+  const [language, setLanguageState] = useState("ar");
 
   useEffect(() => {
-    const savedLang = localStorage.getItem("language");
-    if (savedLang) {
-      setLanguage(savedLang);
+    try {
+      const savedLang = localStorage.getItem("language");
+      if (savedLang && (savedLang === "ar" || savedLang === "en")) {
+        setLanguageState(savedLang);
+      }
+    } catch (e) {
+      console.error("Failed to read language preference:", e);
     }
   }, []);
 
-  const toggleLanguage = () => {
-    const newLang = language === "en" ? "ar" : "en";
-    setLanguage(newLang);
-    localStorage.setItem("language", newLang);
+  const setLanguage = (lang) => {
+    setLanguageState(lang);
+    try {
+      localStorage.setItem("language", lang);
+    } catch (e) {
+      console.error("Failed to save language preference:", e);
+    }
   };
 
-  useEffect(() => {
-    document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
-    document.documentElement.lang = language;
-  }, [language]);
+  const toggleLanguage = () => {
+    setLanguage(language === "en" ? "ar" : "en");
+  };
 
-  // Global ChunkLoadError / Script Load Failure Recovery Handler
-  useEffect(() => {
-    const handleError = (e) => {
-      const errorMsg = e.message || "";
-      const isChunkError = 
-        errorMsg.includes("ChunkLoadError") || 
-        errorMsg.includes("Loading chunk") || 
-        errorMsg.includes("Failed to load script") ||
-        errorMsg.includes("CSS chunk");
-        
-      if (isChunkError) {
-        const lastReload = sessionStorage.getItem("lastChunkReload");
-        const now = Date.now();
-        // Prevent infinite loops (limit reload to once every 10 seconds)
-        if (!lastReload || now - parseInt(lastReload, 10) > 10000) {
-          sessionStorage.setItem("lastChunkReload", now.toString());
-          
-          // Clear service worker caches if supported
-          if (typeof window !== "undefined" && "caches" in window) {
-            caches.keys().then((keys) => {
-              keys.forEach((key) => caches.delete(key));
-            });
-          }
-          
-          window.location.reload(true);
-        }
-      }
-    };
-
-    window.addEventListener("error", handleError, true);
-    
-    const handleRejection = (e) => {
-      if (e.reason && (
-        e.reason.name === "ChunkLoadError" ||
-        e.reason.message?.includes("Loading chunk") ||
-        e.reason.message?.includes("Failed to load script")
-      )) {
-        handleError({ message: e.reason.message });
-      }
-    };
-    
-    window.addEventListener("unhandledrejection", handleRejection);
-
-    return () => {
-      window.removeEventListener("error", handleError, true);
-      window.removeEventListener("unhandledrejection", handleRejection);
-    };
-  }, []);
-
-  // Global Service Worker Register with Auto-Update Check
-  useEffect(() => {
-    if (typeof window !== "undefined" && "serviceWorker" in navigator) {
-      navigator.serviceWorker.register("/sw.js").then((reg) => {
-        // Reg updatefound triggers whenever there's a byte change in sw.js
-        reg.addEventListener("updatefound", () => {
-          const newWorker = reg.installing;
-          if (newWorker) {
-            newWorker.addEventListener("statechange", () => {
-              if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
-                // New build detected. Force reload to get updated static bundle references
-                window.location.reload();
-              }
-            });
-          }
-        });
-      }).catch((err) => {
-        console.error("ServiceWorker registration failed: ", err);
-      });
-    }
-  }, []);
-
-  const t = content[language];
+  const t = content[language] || content.ar;
   const whatsappLink = "https://wa.me/966566706358";
 
   return (
     <LanguageContext.Provider value={{ language, toggleLanguage, setLanguage, t, whatsappLink }}>
-      {children}
+      <div dir={language === "ar" ? "rtl" : "ltr"} className={language === "ar" ? "font-cairo" : "font-plus-jakarta"}>
+        {children}
+      </div>
     </LanguageContext.Provider>
   );
 }
 
 export function useLanguage() {
-  return useContext(LanguageContext);
+  const ctx = useContext(LanguageContext);
+  if (!ctx) {
+    throw new Error("useLanguage must be used within a LanguageProvider");
+  }
+  return ctx;
 }

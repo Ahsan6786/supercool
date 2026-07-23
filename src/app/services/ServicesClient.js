@@ -143,7 +143,7 @@ export default function ServicesClient() {
           <h1 className="text-[28px] sm:text-4xl md:text-5xl font-black font-plus-jakarta leading-tight mb-4">
             {language === "ar"
               ? "حلول تكييف متكاملة في الأحساء والهفوف"
-              : "Complete Quality AC Solutions in Al\u00a0Ahsa  Al\u00a0Hofuf"}
+              : "Complete Quality AC Solutions in Al\u00a0Ahsa, Al\u00a0Hofuf"}
           </h1>
           <p className="text-slate-200 text-base md:text-lg max-w-2xl mx-auto">
             {language === "ar"

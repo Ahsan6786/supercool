@@ -20,8 +20,8 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata = {
   metadataBase: new URL("https://supercoolalhasa.shop"),
-  title: "Super Cool AC Services - Al Ahsa  Al Hofuf | 30+ Years Experience",
-  description: "Quality AC installation, repair, cleaning, and copper pipe wrapping in Al Ahsa  Al Hofuf, and Eastern Province. 30+ years experience. Call +966 56 670 6358.",
+  title: "Super Cool AC Services - Al Ahsa, Al Hofuf | 30+ Years Experience",
+  description: "Quality AC installation, repair, cleaning, and copper pipe wrapping in Al Ahsa, Al Hofuf, and Eastern Province. 30+ years experience. Call +966 56 670 6358.",
   alternates: {
     canonical: "/",
   },
@@ -36,8 +36,8 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: "Super Cool AC Services - Al Ahsa  Al Hofuf",
-    description: "Quality AC installation, repair, cleaning & copper piping in Al Ahsa  Al Hofuf. 30+ years experience. Call +966 56 670 6358.",
+    title: "Super Cool AC Services - Al Ahsa, Al Hofuf",
+    description: "Quality AC installation, repair, cleaning, and copper piping in Al Ahsa, Al Hofuf. 30+ years experience. Call +966 56 670 6358.",
     url: "https://supercoolalhasa.shop",
     siteName: "Super Cool AC Services",
     images: [
@@ -53,8 +53,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Super Cool AC Services - Al Ahsa  Al Hofuf",
-    description: "Quality AC installation, repair, cleaning & copper piping in Al Ahsa  Al Hofuf. Call +966 56 670 6358.",
+    title: "Super Cool AC Services - Al Ahsa, Al Hofuf",
+    description: "Quality AC installation, repair, cleaning, and copper piping in Al Ahsa, Al Hofuf. Call +966 56 670 6358.",
     images: ["/images/logo.png"],
   },
   manifest: "/manifest.json",
